@@ -1,5 +1,7 @@
 FROM python:3.6
 
+RUN apt-get update && apt-get install nano
+
 RUN mkdir -p /opt/services/website/src
 WORKDIR /opt/services/website/src
 COPY Pipfile Pipfile.lock /opt/services/website/src/

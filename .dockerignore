@@ -1,8 +1,11 @@
 .vscode
 env
 nginx
+postgresql
 .gitignore
 docker-compose.yml
 Dockerfile
 LICENSE
+Pipfile
+Pifile.lock
 README.md
