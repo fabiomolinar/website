@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="{{ LANGUAGE_CODE }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>{% block title %}{% endblock title %}{% block title-page %}{% endblock title-page %} - Fabio Molinar's WebSite</title>
+        <meta name="author" content="Fabio Thomaz Molinar" />
+        {% block description %}
+            <meta name="description" content="Fabio's personal website. Despite being my hobby, it is also used as a testing environment for my side projects." />
+        {% endblock description%}        
+        {% block keywords %}{% endblock keywords %}
+        {% block head %}{% endblock head %}
+                
+        {% load static %}
+        <!-- Icons -->
+        <link rel="shortcut icon" href="{% static 'base/images/icon.ico' %}">
+        <link rel="apple-touch-icon-precomposed" href="{% static 'base/images/icon.png' %}">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="{% static 'base/style.css' %}" />
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'base/images/icon.svg' %}" width="30" height="30" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item {{ page_name.index|yesno:'active,,' }}">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item {{ page_name.projects|yesno:'active,,' }}">
+                        <a class="nav-link" href="/projects">Projects</a>
+                    </li>
+                    <li class="nav-item {{ page_name.blog|yesno:'active,,' }}">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item {{ page_name.about|yesno:'active,,' }}">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    <li class="nav-item {{ page_name.contact|yesno:'active,,' }}">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <main>
+            {% block base-content %}{% endblock base-content %}
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <span class="text-muted">Copyright © {% now 'Y' %} Fabio Thomaz Molinar</span>
+            </div>
+        </footer>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <!-- Popper -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <!-- Bootstrap -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    </body>
+</html>

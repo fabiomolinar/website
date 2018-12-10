@@ -6,6 +6,4 @@ postgresql
 docker-compose.yml
 Dockerfile
 LICENSE
-Pipfile
-Pifile.lock
 README.md
