@@ -1,0 +1,3 @@
+POSTGRES_USER=website
+POSTGRES_PASSWORD=website
+POSTGRES_DB=website

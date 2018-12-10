@@ -1,5 +1,6 @@
-env
 .vscode
+env
+nginx
 .gitignore
 docker-compose.yml
 Dockerfile

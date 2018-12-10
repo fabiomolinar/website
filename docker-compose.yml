@@ -4,9 +4,14 @@ services:
   website:
     build: .
     volumes:
-      - .:/opt/services/djangoapp/src
+      - .:/opt/services/website/src
+      - static_volume:/opt/services/website/static
+      - media_volume:/opt/services/website/media
     networks:
       - nginx_network
+      - website_db_network
+    depends_on:
+      - website_db
 
   nginx:
     image: nginx:1.15
@@ -14,11 +19,29 @@ services:
       - 8000:80
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/opt/services/website/static
+      - media_volume:/opt/services/website/media
     depends_on:
       - website
     networks:
       - nginx_network
 
+  website_db:
+    image: postgres:11.1
+    env_file:
+      - postgresql/env
+    networks:
+      - website_db_network
+    volumes:
+      - website_db_volume:/var/lib/postgresql/data
+
 networks:
   nginx_network:
     driver: bridge
+  website_db_network:
+    driver: bridge
+
+volumes:
+  website_db_volume:
+  static_volume:
+  media_volume:
