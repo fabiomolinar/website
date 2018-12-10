@@ -1,1 +1,0 @@
-ALTER USER website WITH PASSWORD 'website';

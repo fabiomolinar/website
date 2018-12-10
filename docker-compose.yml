@@ -1,12 +1,24 @@
 version: '3'
 
 services:
-  # Nginx
+  website:
+    build: .
+    volumes:
+      - .:/opt/services/djangoapp/src
+    networks:
+      - nginx_network
+
   nginx:
-    
-  # Gunicorn
-  gunicorn:
-    
-  # Django
-  django:
-    
+    image: nginx:1.15
+    ports:
+      - 8000:80
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - website
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge

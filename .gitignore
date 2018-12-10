@@ -1,6 +1,7 @@
 # My settings
 logs/
 *.prod
+.vscode/
 
 # Github defaults
 # Byte-compiled / optimized / DLL files
