@@ -13,6 +13,7 @@ RUN pip install --upgrade pip && \
 
 # copy our project code
 COPY . /opt/services/website/src
+ARG CACHEBUST=2
 RUN cd website && python manage.py collectstatic --no-input
 
 # expose the port 8000
