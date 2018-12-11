@@ -5,12 +5,115 @@
 {% endblock title %}
 {% block description %}
     <meta name="description" content="A little about me." />
-{% endblock description%}
+{% endblock description %}
 {% block keywords %}
     <meta name="keywords" content="Fabio Thomaz Molinar, Fabio Molinar, Blog, Personal site, Projects, Web, Development, IoT, Industry 4.0, Gas Turbines" />
     <meta name="keywords" content="IoT, Industry 4.0, Gas Turbines, Utilities, Power, Power generation" />
-{% endblock keywords%}
+{% endblock keywords %}
+
+{% block head %}
+    <!-- FontAwesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/solid.js" integrity="sha384-Xgf/DMe1667bioB9X1UM5QX+EG6FolMT4K7G+6rqNZBSONbmPh/qZ62nBPfTx+xG" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/fontawesome.js" integrity="sha384-bNOdVeWbABef8Lh4uZ8c3lJXVlHdf8W5hh1OpJ4dGyqIEhMmcnJrosjQ36Kniaqm" crossorigin="anonymous"></script>
+{% endblock head %}
 
 {% block base-content %}
-    <h1>About</h1>
+    <div class="jumbotron">
+        <h2>About</h2>      
+    </div>
+    <div class="container">
+        <ul class="timeline">
+            <li>
+                <div class="timeline-badge success"><span style="font-size: 1.3em;"><i class="fas fa-laptop"></i></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Hobbyist</h4>       
+                        <p><small class="text-muted">[always]</small></p>
+                    </div>
+                    <div class="timeline-body">
+                        <p></p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-badge primary"><span style="font-size: 1.3em;"><i class="fas fa-industry"></i></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Lead Gas Turbines Controls Engineer</h4>       
+                        <p><small class="text-muted">[today] Engineering Design Center (a General Electric company) - Poland</small></p>                 
+                    </div>
+                    <div class="timeline-body">
+                        <p>Working for GE Cross-Fleet Gas Turbines Solutions. Responsible to develop control system projects of heavy duty gas turbines from other manufactures (oOEM). Main development done with Diasys Netmation controller for Mitsubishi turbines and T3000 for Siemens turbines.</p>
+                        <p>Development of control software for GE Aeroderivative Gas Turbines LM2500, LM6000 and LMS in GAP (MicroNet - Woodward), ToolboxST (MarkVIe - GE) and Proficy Machine Edition (RX3i). Provide customer support on the aforementioned turbine control. </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-badge danger"><span style="font-size: 1.3em;"><i class="fas fa-university"></i></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Information Systems Project Management</h4>       
+                        <p><small class="text-muted">[2018] University of Liverpool</small></p>                 
+                    </div>
+                    <div class="timeline-body">
+                        <p>The University of Liverpool Online MSc in Information Systems Management focuses on innovation management and leadership in information systems management. It is designed to give one the skills and knowledge to drive growth, innovation and change within organisations, by leveraging the power of technology.</p>
+                        <p>This BCS-accredited programme offers the opportunity to develop a deep understanding of how technology enables business, and how successful businesses are driven by technology. Through its multidisciplinary focus and wide range of elective modules including cutting-edge subjects such as cyber security and big data analytics, one have the opportunity to acquire specialist insights.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-badge success"><span style="font-size: 1.3em;"><i class="fas fa-laptop"></i></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Co-founder</h4>       
+                        <p><small class="text-muted">[2016] Evolme - Brazil</small></p>                 
+                    </div>
+                    <div class="timeline-body">
+                        <p>Web service focused on improving the user experience of restaurants customers and empowering restaurant owners with data and insights to drive their strategy and restaurant improvements.</p>
+                        <p>The platform collected data from restaurnt users and created especialized reports and feedback to restaurant owners to help driving their improvement.</p>
+                    </div>
+                </div>
+            </li>
+            <li class="timeline-inverted">
+                <div class="timeline-badge primary"><span style="font-size: 1.3em;"><i class="fas fa-industry"></i></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Gas Turbines Field Service Engineer</h4>       
+                        <p><small class="text-muted">[2014] Sirio Sistemas Eletronicos - Brazil</small></p>                 
+                    </div>
+                    <div class="timeline-body">
+                        <p>Responsible for the project commissioning, system updates and start-up of control and automation systems for rotating machines, mainly turbines, compressors and electric generators of high power for power plants and for the oil & gas industry.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-badge danger"><span style="font-size: 1.3em;"><i class="fas fa-university"></i></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Mechatronics Engineering</h4>       
+                        <p><small class="text-muted">[2013] Technische Universität Dresden - Germany</small></p>                 
+                    </div>
+                    <div class="timeline-body">
+                        <p>One year exchange program.</p>
+                        <p>Field of study: mechatronics.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="timeline-badge danger"><span style="font-size: 1.3em;"><i class="fas fa-university"></i></span></div>
+                <div class="timeline-panel">
+                    <div class="timeline-heading">
+                        <h4 class="timeline-title">Control and Automation Engineering</h4>       
+                        <p><small class="text-muted">[2013] Universidade Federal de Itajubá - Brazil</small></p>
+                    </div>
+                    <div class="timeline-body">
+                        <p>Bachelor of Engineering - Controls and Automation Engineering.</p>
+                        <p>Control engineering or control systems engineering is an engineering discipline that applies automatic control theory to design systems with desired behaviors in control environments.</p>
+                        <p>Extra activities and societies: junior company, researcher in economics</p>
+                        <p>Thesis: energy control and management in a DC bus supplied by power sources with different electric and dynamic characteristics.</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 {% endblock base-content %}

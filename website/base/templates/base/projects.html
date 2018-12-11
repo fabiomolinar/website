@@ -12,8 +12,52 @@
 {% endblock keywords%}
 
 {% block base-content %}
-    <h1>Projects</h1>
-    <ul>
-        <li>Blog</li>
-    </ul>
+    <div class="jumbotron">
+        <h2>Projects</h2>      
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="card-deck">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">This website</h3>
+                        <div class="card-subtitle mb-2">
+                            <span class="badge badge-pill badge-primary">Python</span>
+                            <span class="badge badge-pill badge-primary">Django</span>
+                            <span class="badge badge-pill badge-primary">Docker</span>
+                            <span class="badge badge-pill badge-primary">Nginx</span>
+                            <span class="badge badge-pill badge-primary">Gunicorn</span>
+                        </div>
+                        <p>This website is powered by Django and its technology stack include Docker, Nginx and Gunicorn. At least for now.</p>                        
+                    </div>
+                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">View details</a></div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">My blog</h3>
+                        <div class="card-subtitle mb-2">
+                            <span class="badge badge-pill badge-primary">Python</span>
+                            <span class="badge badge-pill badge-primary">Django</span>
+                            <span class="badge badge-pill badge-primary">Zinnia</span>
+                        </div>
+                        <p>I wanted to be able to include a blog to my website without the need to create one from scratch. Django's app structure and Zinnia came in handy so I could achieve just that.</p>                        
+                    </div>
+                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">View details</a></div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">Web Scraping - AliExpress</h3>
+                        <div class="card-subtitle mb-2">
+                            <span class="badge badge-pill badge-primary">Python</span>
+                            <span class="badge badge-pill badge-primary">Scrapy</span>
+                            <span class="badge badge-pill badge-primary">Scrapyd</span>
+                            <span class="badge badge-pill badge-primary">Numpy</span>
+                        </div>
+                        <p>A service that collects data about any products searchable at AliExpress</p>                        
+                    </div>
+                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">View details</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock base-content %}

@@ -17,6 +17,12 @@ To run a migration and update the volume container, the following command can be
 
 `sudo docker-compose up`
 
+## Style
+
+- Timeline
+
+Reference: https://bootsnipp.com/snippets/featured/timeline-responsive
+
 ## Technology stack
 
 - Ubuntu
