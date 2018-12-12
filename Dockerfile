@@ -6,14 +6,14 @@ RUN mkdir -p /opt/services/website/src
 WORKDIR /opt/services/website/src
 COPY Pipfile Pipfile.lock /opt/services/website/src/
 
-# install our two dependencies
+# install our dependencies
 RUN pip install --upgrade pip && \
   pip install pipenv && \
   pipenv install --system
 
 # copy our project code
 COPY . /opt/services/website/src
-ARG CACHEBUST=2
+ARG CACHEBUST=1
 RUN cd website && python manage.py collectstatic --no-input
 
 # expose the port 8000
