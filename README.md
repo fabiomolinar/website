@@ -3,6 +3,8 @@ My personal website
 
 ## Running migrations
 
+It's not a good practice (nor a good idea) to run migrations while creating Docker images. One of the reasons being that the DB service may not even be running.
+
 - Dev environment
 
 `python manage.py migrate --settings=website.settings_test`
@@ -11,7 +13,7 @@ My personal website
 
 To run a migration and update the volume container, the following command can be used:
 
-`sudo docker-compose run --rm website /bin/bash -c "cd website; ./manage.py migrate"`
+`sudo docker-compose run --rm website /bin/bash -c "python manage.py migrate"`
 
 ## Managing the containers
 
