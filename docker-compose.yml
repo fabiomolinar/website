@@ -12,6 +12,7 @@ services:
       - website_db_network
     depends_on:
       - website_db
+    command: ["gunicorn", "--bind", ":8000", "website.wsgi:application"]
 
   nginx:
     image: nginx:1.15

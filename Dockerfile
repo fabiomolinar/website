@@ -1,4 +1,8 @@
 FROM python:3.6
+# proxy settings
+ARG PROXY
+ENV http_proxy=${PROXY}
+ENV PIP_PROXY=${PROXY}
 
 RUN apt-get update && apt-get install nano
 
@@ -18,6 +22,6 @@ RUN cd website && python manage.py collectstatic --no-input
 
 # expose the port 8000
 EXPOSE 8000
-
+WORKDIR /opt/services/website/src/website
 # define the default command to run when starting the container
-CMD ["gunicorn", "--chdir", "website", "--bind", ":8000", "website.wsgi:application"]
+CMD ["gunicorn", "--bind", ":8000", "website.wsgi:application"]
