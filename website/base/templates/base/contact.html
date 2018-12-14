@@ -9,7 +9,41 @@
 {% block keywords %}
     <meta name="keywords" content="Fabio Thomaz Molinar, Fabio Molinar, Contact" />    
 {% endblock keywords%}
+{% block head %}
+    <!-- FontAwesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+{% endblock head %}
 
 {% block base-content %}
-    <h1>Contact</h1>
+    <div class="jumbotron">
+        <h2>Contact</h2>      
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 col-lg-6">
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col" colspan="2">Get in touch...</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row" class="align-middle">Email</th>
+                            <td class="text-center"><a href="mailto:fabio.molinar+website@gmail.com"><span class="fas fa-envelope fa-2x" aria-hidden="true"></span></a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="align-middle">LinkedIn</th>
+                            <td class="text-center"><a href="https://www.linkedin.com/in/fabiomolinar/" target="_blank" rel="noopener noreferrer"><span class="fab fa-linkedin fa-2x" aria-hidden="true"></span></a></td>
+                        </tr>
+                        <tr>
+                            <th scope="row" class="align-middle">Github</th>
+                            <td class="text-center"><a href="https://github.com/fabiomolinar" target="_blank" rel="noopener noreferrer"><span class="fab fa-github fa-2x" aria-hidden="true"></span></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
 {% endblock base-content %}

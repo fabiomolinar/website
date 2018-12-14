@@ -26,7 +26,7 @@ sudo docker build -t website .
 sudo docker-compose build
 ```
 
-or,  if behind a proxy:
+or,  **if behind a proxy**:
 
 ```bash
 # with docker
@@ -72,3 +72,9 @@ Reference: https://bootsnipp.com/snippets/featured/timeline-responsive
 ## References
 
 - http://pawamoy.github.io/2018/02/01/docker-compose-django-postgres-nginx.html
+
+## Development vs Production
+
+At the beginning my intention was to get a running Docker container ready for production. Therefore, the Dockerfile and docker-compose.yml of this project were made to reflect this. They start a project running Django with Gunicorn and Nginx. On top of that, static file collection is done from the project folder and store within a specified folder for Nginx. But that is not good for development as everytime I need to change a file, I need to run `./manage.py collecstatic` command. Therefore, I have created a separated `settings_test.py` configuration file to be ran with `./manage.py runserver --settings=website.settings_test` that spins up a Django server connected to a PostgreSQL DB running on the dev computer, instead of relying on the PostgreSQL container that is used for production. 
+
+Before uploading the project to the cloud, first it's necessary to substitute some files (containing credential information, keys information and others) with their related `**.*.dev` files which are not pushed to the repository. 
