@@ -12,8 +12,8 @@
     <link rel="pingback" href="/xmlrpc/" />
     <link rel="home" href="{% url 'zinnia:entry_archive_index' %}" />
     {% block meta %}{% endblock meta %}
-    <link rel="stylesheet" type="text/css" media="screen, projection" href="{% static "zinnia/theme/css/screen.css" %}" />
-    <link rel="stylesheet" type="text/css" media="print" href="{% static "zinnia/theme/css/print.css" %}" />
+    <link rel="stylesheet" type="text/css" media="screen, projection" href="{% static 'zinnia/theme/css/screen.css' %}" />
+    <link rel="stylesheet" type="text/css" media="print" href="{% static 'zinnia/theme/css/print.css' %}" />
     <!--[if lt IE 8]>
         <link rel="stylesheet" type="text/css" media="screen, projection" href="{% static "zinnia/theme/css/ie.css" %}" />
     <![endif]-->
@@ -24,7 +24,7 @@
 
 {% block base-content %}
     <div class="jumbotron">
-        <h2>Blog</h2>      
+        <h2>{% trans "Blog" %}</h2>      
     </div>
     <div class="zinnia {% block theme-class %}default{% endblock theme-class %} {% block color-class %}blue{% endblock color-class %} {% block sidebar-class %}right-sidebar{% endblock sidebar-class %} {% block body-class %}{% endblock body-class %}">
     <div class="container">

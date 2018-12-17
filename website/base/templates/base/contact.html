@@ -1,13 +1,14 @@
 {% extends "base/base.html" %}
+{% load i18n %}
 
 {% block title %}
     Contact
 {% endblock title %}
 {% block description %}
-    <meta name="description" content="How to get in contact with me." />
+    <meta name="description" content="{% blocktrans %}How to get in contact with me.{% endblocktrans %}" />
 {% endblock description%}
 {% block keywords %}
-    <meta name="keywords" content="Fabio Thomaz Molinar, Fabio Molinar, Contact" />    
+    <meta name="keywords" content="{% blocktrans %}Fabio Thomaz Molinar, Fabio Molinar, Contact{% endblocktrans %}" />    
 {% endblock keywords%}
 {% block head %}
     <!-- FontAwesome -->
@@ -16,7 +17,7 @@
 
 {% block base-content %}
     <div class="jumbotron">
-        <h2>Contact</h2>      
+        <h2>{% trans "Contact" %}</h2>      
     </div>
     <div class="container">
         <div class="row justify-content-center">
@@ -24,7 +25,7 @@
                 <table class="table table-bordered table-striped table-hover">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col" colspan="2">Get in touch...</th>
+                            <th scope="col" colspan="2">{% blocktrans %}Get in touch...{% endblocktrans %}</th>
                         </tr>
                     </thead>
                     <tbody>

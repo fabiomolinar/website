@@ -1,4 +1,5 @@
 {% extends "base/base.html" %}
+{% load i18n %}
 
 {% block title %}
     My Projects
@@ -7,20 +8,20 @@
     <meta name="description" content="List of the projects I have worked/am working on." />
 {% endblock description%}
 {% block keywords %}
-    <meta name="keywords" content="Fabio Thomaz Molinar, Fabio Molinar, Blog, Personal site, Projects, Web, Development, IoT, Industry 4.0, Gas Turbines" />
-    <meta name="keywords" content="IoT, Industry 4.0, Gas Turbines, Utilities, Power, Power generation" />
+    <meta name="keywords" content="{% blocktrans %}Fabio Thomaz Molinar, Fabio Molinar, Blog, Personal site, Projects, Web, Development, IoT, Industry 4.0, Gas Turbines{% endblocktrans %}" />
+    <meta name="keywords" content="{% blocktrans %}IoT, Industry 4.0, Gas Turbines, Utilities, Power, Power generation{% endblocktrans %}" />
 {% endblock keywords%}
 
 {% block base-content %}
     <div class="jumbotron">
-        <h2>Projects</h2>      
+        <h2>{% trans "Projects" %}</h2>      
     </div>
     <div class="container">
         <div class="row">
             <div class="card-deck">
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">This website</h3>
+                        <h3 class="card-title">{% blocktrans %}This website{% endblocktrans %}</h3>
                         <div class="card-subtitle mb-2">
                             <span class="badge badge-pill badge-primary">Python</span>
                             <span class="badge badge-pill badge-primary">Django</span>
@@ -28,34 +29,34 @@
                             <span class="badge badge-pill badge-primary">Nginx</span>
                             <span class="badge badge-pill badge-primary">Gunicorn</span>
                         </div>
-                        <p>This website is powered by Django and its technology stack include Docker, Nginx and Gunicorn. At least for now.</p>                        
+                        <p>{% blocktrans %}This website is powered by Django and its technology stack include Docker, Nginx and Gunicorn. At least for now.{% endblocktrans %}</p>                        
                     </div>
-                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">View details</a></div>
+                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">{% trans "View Details" %}</a></div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">My blog</h3>
+                        <h3 class="card-title">{% blocktrans %}My blog{% endblocktrans %}</h3>
                         <div class="card-subtitle mb-2">
                             <span class="badge badge-pill badge-primary">Python</span>
                             <span class="badge badge-pill badge-primary">Django</span>
                             <span class="badge badge-pill badge-primary">Zinnia</span>
                         </div>
-                        <p>I wanted to be able to include a blog to my website without the need to create one from scratch. Django's app structure and Zinnia came in handy so I could achieve just that.</p>                        
+                        <p>{% blocktrans %}I wanted to be able to include a blog to my website without the need to create one from scratch. Django's app structure and Zinnia came in handy so I could achieve just that.{% endblocktrans %}</p>
                     </div>
-                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">View details</a></div>
+                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">{% trans "View Details" %}</a></div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        <h3 class="card-title">Web Scraping - AliExpress</h3>
+                        <h3 class="card-title">{% blocktrans %}Web Scraping - AliExpress{% endblocktrans %}</h3>
                         <div class="card-subtitle mb-2">
                             <span class="badge badge-pill badge-primary">Python</span>
                             <span class="badge badge-pill badge-primary">Scrapy</span>
                             <span class="badge badge-pill badge-primary">Scrapyd</span>
                             <span class="badge badge-pill badge-primary">Numpy</span>
                         </div>
-                        <p>A service that collects data about any products searchable at AliExpress</p>                        
+                        <p>{% blocktrans %}A service that collects data about any products searchable at AliExpress.{% endblocktrans %}</p>                        
                     </div>
-                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">View details</a></div>
+                    <div class="card-footer text-right d-none"><a href="#" class="btn btn-primary">{% trans "View Details" %}</a></div>
                 </div>
             </div>
         </div>
