@@ -43,6 +43,12 @@ sudo docker-compose build --build-arg PROXY="http://user:password@proxyserver:po
 
 `sudo docker exec -it <container> /bin/bash`
 
+## Internationalization
+
+1. Go inside the app folder and type `django-admin makemessages -l <language>`
+2. Update the *.po files
+3. From the same directory, run `django-admin compilemessages`
+
 ## Runing tests
 
 - Dev environment

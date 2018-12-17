@@ -1,4 +1,5 @@
 {% extends "base/base.html" %}
+{% load i18n %}
 
 {% block title %}
     Home
@@ -13,15 +14,17 @@
 
 {% block base-content %}
     <div class="jumbotron">
-        <h2>Hi, I'm Fabio.</h2>
-        <p>Web developer, Industrial Automation Engineer, Husband & Father.</p>        
+        <h2>{% blocktrans %}Hi, I'm Fabio.{% endblocktrans %}</h2>
+        <p>{% blocktrans %}Web developer, Industrial Automation Engineer, Husband & Father.{% endblocktrans %}</p>        
     </div>
     <div class="container">
         <div class="row">
             <div class="col">
-                <p>Welcome to my personal website.</p>
-                <p>This is the place where I run some of my personal <a href="/projects">projects</a> and where my hobbies come to life. It is also where you will find my <a href="/blog">blog</a>.</p>
-                <p>This is where I come to when I am not at work, when my wife is busy and my children are sleeping. :)</p>
+                <p>{% blocktrans %}Welcome to my personal website.{% endblocktrans %}</p>
+                {% url 'projects' as project_url %}
+                {% url 'zinnia:entry_archive_index' as blog_url %}
+                <p>{% blocktrans %}This is the place where I run some of my personal <a href="{{ project_url }}">projects</a> and where my hobbies come to life. It is also where you will find my <a href="{{ blog_url }}">blog</a>.{% endblocktrans %}</p>
+                <p>{% blocktrans %}This is where I come to when I am not at work, when my wife is busy and my children are sleeping. :){% endblocktrans %}</p>
             </div>
         </div>
     </div>

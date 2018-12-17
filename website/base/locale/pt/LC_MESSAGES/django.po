@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-17 15:11+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. Translators: Home as the home page of a website
+#: templates/base/base.html:41
+msgid "Home"
+msgstr "Página Inicial"
+
+#: templates/base/base.html:46
+msgid "Projects"
+msgstr "Projetos"
+
+#: templates/base/base.html:51
+msgid "Blog"
+msgstr "Blog"
+
+#: templates/base/base.html:56
+msgid "About"
+msgstr "Sobre"
+
+#: templates/base/base.html:61
+msgid "Contact"
+msgstr "Contato"
+
+#: templates/base/base.html:98
+msgid "Copyright"
+msgstr ""
+
+#: templates/base/index.html:17
+msgid "Hi, I'm Fabio."
+msgstr "Olá, me chamo Fábio."
+
+#: templates/base/index.html:18
+msgid "Web developer, Industrial Automation Engineer, Husband & Father."
+msgstr "Programador Web, Engenheiro de Controle e Automação, Marido & Pai."
+
+#: templates/base/index.html:23
+msgid "Welcome to my personal website."
+msgstr "Bem vindo ao meu site pessoal."
+
+#: templates/base/index.html:26
+msgid ""
+"This is the place where I run some of my personal <a href=\"%(project_url)s"
+"\">projects</a> and where my hobbies come to life. It is also where you will "
+"find my <a href=\"%(blog_url)s\">blog</a>."
+msgstr ""
+"Esse é o local onde se encontram alguns dos meus <a href=\"%(project_url)s"
+"\">projetos</a> pessoais e onde tiro meus hobbies do papel. É também o local "
+"onde se encontra meu <a href=\"%(blog_url)s\">blog</a>."
+
+#: templates/base/index.html:27
+msgid ""
+"This is where I come to when I am not at work, when my wife is busy and my "
+"children are sleeping. :)"
+msgstr ""
+"É para aqui que venho quando não estou no trabalho, quando minha esposa está "
+"ocupada e meus filhos estão dormindo."

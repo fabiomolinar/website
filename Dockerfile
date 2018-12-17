@@ -4,7 +4,9 @@ ARG PROXY
 ENV http_proxy=${PROXY}
 ENV PIP_PROXY=${PROXY}
 
-RUN apt-get update && apt-get install nano
+RUN apt-get update && apt-get install -y \ 
+  nano \
+  gettext 
 
 RUN mkdir -p /opt/services/website/src
 WORKDIR /opt/services/website/src
@@ -18,7 +20,10 @@ RUN pip install --upgrade pip && \
 # copy our project code
 COPY . /opt/services/website/src
 ARG CACHEBUST=1
+# collect static
 RUN cd website && python manage.py collectstatic --no-input
+# create translation
+RUN cd website/base && django-admin compilemessages
 
 # expose the port 8000
 EXPOSE 8000
