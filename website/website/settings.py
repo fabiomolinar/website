@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['localhost']
 
 INSTALLED_APPS = [
     'base.apps.BaseConfig',
+    'ali.apps.AliConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',

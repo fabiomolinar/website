@@ -5,6 +5,7 @@ ENV http_proxy=${PROXY}
 ENV PIP_PROXY=${PROXY}
 
 RUN apt-get update && apt-get install -y \ 
+  apt-utils \
   nano \
   gettext 
 

@@ -3,6 +3,7 @@ version: '3'
 services:
   website:
     build: .
+    image: website
     volumes:
       - .:/opt/services/website/src
       - static_volume:/opt/services/website/static
@@ -28,9 +29,12 @@ services:
       - nginx_network
 
   website_db:
-    image: postgres:11.1
+    build:
+      context: ./postgresql
+      dockerfile: Dockerfile
+    image: website_db
     env_file:
-      - postgresql/env
+      - ./postgresql/env
     networks:
       - website_db_network
     volumes:

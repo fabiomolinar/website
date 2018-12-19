@@ -84,3 +84,93 @@ Reference: https://bootsnipp.com/snippets/featured/timeline-responsive
 At the beginning my intention was to get a running Docker container ready for production. Therefore, the Dockerfile and docker-compose.yml of this project were made to reflect this. They start a project running Django with Gunicorn and Nginx. On top of that, static file collection is done from the project folder and store within a specified folder for Nginx. But that is not good for development as everytime I need to change a file, I need to run `./manage.py collecstatic` command. Therefore, I have created a separated `settings_test.py` configuration file to be ran with `./manage.py runserver --settings=website.settings_test` that spins up a Django server connected to a PostgreSQL DB running on the dev computer, instead of relying on the PostgreSQL container that is used for production. 
 
 Before uploading the project to the cloud, first it's necessary to substitute some files (containing credential information, keys information and others) with their related `**.*.dev` files which are not pushed to the repository. 
+
+## DB
+
+### Installing postgresql on Linux
+
+```bash
+$ sudo apt-get update
+#The packages below are necessary only to get Django working with postgresql
+$ sudo apt-get install libpq-dev python-dev
+#Install postgresql
+$ sudo apt-get install postgresql postgresql-contrib
+#Changing to the postgres user
+$ sudo -i -u postgres
+#Accessing the postgresql prompt
+$ psql
+#To exit the prompt, type \q
+postgres=# \q
+#Instead of changing users, we could use the sudo command:
+$ sudo -u postgres psql
+```
+
+By default, Postgres uses a concept called "roles" to handle in authentication and authorization. These are, in some ways, similar to regular Unix-style accounts, but Postgres does not distinguish between users and groups and instead prefers the more flexible term "role".
+
+Upon installation Postgres is set up to use **ident authentication**, which means that it associates Postgres roles with a matching Unix/Linux system account. If a role exists within Postgres, a Unix/Linux username with the same name will be able to sign in as that role.
+
+The installation procedure created a user account called `postgres` that is associated with the default Postgres role. In order to use Postgres, we can log into that account.
+
+```bash
+#Creating a postgresql user with the same name of the DB we want in order to use the ident authentication
+#commands as postgres user
+postgres@server:~$ createuser --interactive
+#The same command above could be done using sudo
+$ sudo -u postgres createuser --interactive
+#The command will prompt for information regarding the new postgresql user. *Fill it*.
+#Now, create the DB with the same name as the newly created postgresql user.
+postgres@server:~$ createdb mysite
+#Next step, let's create the system USER with the same name as the DB and the ROLE
+$ sudo adduser mysite
+$ sudo -i -u mysite
+$ psql
+#You will be logged in automatically assuming that all of the components have been properly configured.
+```
+
+If we have created different postgresql users and we want to grant them access to our DB, we can use the following command inside the postgresql prompt
+
+```bash
+$ psql
+postgres=# GRANT ALL PRIVILEGES ON DATABASE <DB name> TO <postgresql user name>;
+```
+
+And if we need to change a user's password:
+
+```bash
+postgres=# ALTER USER <user name> WITH PASSWORD '<new password>';
+```
+
+### Configuring Django to run with postgresql
+
+```python
+pip install psycopg2
+```
+
+Then, edit the settings.py file to:
+
+```python
+DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'mysite',
+            'USER': 'mysite',
+            'PASSWORD': 'mysite',
+            'HOST': 'localhost',
+            'PORT': '',
+        }
+    }
+```
+
+The, from the project directory, run:
+
+```python
+python manage.py syncdb
+```
+
+If problems with the password are detected, we can change the postgresql user password with the following commands:
+
+```bash
+$ sudo -u mysite psql mysite
+mysite=> ALTER USER mysite WITH PASSWORD '<new password here>';
+mysite=> \q
+```
