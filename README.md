@@ -15,6 +15,12 @@ To run a migration and update the volume container, the following command can be
 
 `sudo docker-compose run --rm website /bin/bash -c "python manage.py migrate"`
 
+- Migrations for a specific app
+
+While migrating tables only for a app on a different database, use the following command:
+
+`python manage.py <app name> --database=<database name>`
+
 ## Managing the containers
 
 - Building

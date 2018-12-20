@@ -96,9 +96,20 @@ DATABASES = {
         'PASSWORD': 'website',
         'HOST': 'website_db',
         'PORT': '5432',
+    },
+    'ali': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'ali',
+        'USER': 'ali',
+        'PASSWORD': 'ali',
+        'HOST': 'website_db',
+        'PORT': '5432',
     }
 }
 
+DATABASE_ROUTERS = [
+    'ali.routers.AliRouter',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

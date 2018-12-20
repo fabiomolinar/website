@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.postgres import fields as postgres_fields
 
-# Create your models here.
 class Search(models.Model):
     """Data returned from crawling a search results page from Ali"""
 
