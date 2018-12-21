@@ -18,4 +18,4 @@ class AliRouter:
     def allow_migrate(self, db, app_label, model_name=None, **hints):
         if app_label == 'ali':
             return db == 'ali'
-        return None
+        return db == 'default'

@@ -1,3 +1,4 @@
+# pylint: disable=W0614
 from website.settings import *
 
 DATABASES = {

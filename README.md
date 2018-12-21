@@ -21,6 +21,8 @@ While migrating tables only for a app on a different database, use the following
 
 `python manage.py <app name> --database=<database name>`
 
+Additionally, if we don't want the migrations for a certain model to be ran on a certain DB, we need to **update the `allow_migrate()` method from its DB router (`routers.py`) correctly**.
+
 ## Managing the containers
 
 - Building
