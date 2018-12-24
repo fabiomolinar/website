@@ -7,4 +7,5 @@ urlpatterns = [
     path('projects/', views.projects, name='projects'),
     path('about/', views.about, name='about'),
     path('contact/', views.contact, name='contact'),
+    path('projects/ali/', include('ali.urls'))
 ]

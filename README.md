@@ -1,6 +1,8 @@
 # website
 My personal website
 
+This is just a bunch of notes I take in order not to forget things in the future. :)
+
 ## Running migrations
 
 It's not a good practice (nor a good idea) to run migrations while creating Docker images. One of the reasons being that the DB service may not even be running.

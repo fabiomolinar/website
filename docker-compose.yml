@@ -11,6 +11,7 @@ services:
     networks:
       - nginx_network
       - website_db_network
+      - collector_network
     depends_on:
       - website_db
     command: ["gunicorn", "--bind", ":8000", "website.wsgi:application"]
@@ -18,7 +19,7 @@ services:
   nginx:
     image: nginx:1.15
     ports:
-      - 8000:80
+      - "8000:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - static_volume:/opt/services/website/static
@@ -40,10 +41,23 @@ services:
     volumes:
       - website_db_volume:/var/lib/postgresql/data
 
+  collector:
+    build:
+      context: ../collector
+      dockerfile: Dockerfile
+    image: collector
+    networks:
+      - website_db_network
+      - collector_network
+    depends_on:
+      - website_db
+
 networks:
   nginx_network:
     driver: bridge
   website_db_network:
+    driver: bridge
+  collector_network:
     driver: bridge
 
 volumes:

@@ -167,3 +167,6 @@ MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
 # Others
 
 SITE_ID = 1
+
+# How many days we will cache the results from a query
+ALI_SEARCH_CACHE = 3
