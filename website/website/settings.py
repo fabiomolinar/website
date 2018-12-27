@@ -154,6 +154,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+SITE_ID = 1
+
 # ----- My settings -----
 
 # Zinnia
@@ -164,9 +166,11 @@ ZINNIA_MARKUP_LANGUAGE = 'markdown'
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
 
-# Others
+# Scrapyd host
 
-SITE_ID = 1
+SCRAPYD_HOST = 'collector'
 
 # How many days we will cache the results from a query
 ALI_SEARCH_CACHE = 3
+# How many seconds to wait while listening for an event from the DB (in seconds)
+ALI_SEARCH_TIMEOUT = 15

@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.postgres import fields as postgres_fields
+from django.utils.translation import gettext as _
 
 class Search(models.Model):
     """Data returned from crawling a search results page from Ali"""
@@ -29,3 +30,16 @@ class Search(models.Model):
     spider = models.CharField(max_length=51, verbose_name="name of the Scrapy spider")
     server_name = models.CharField(max_length=51, verbose_name="server name")
     date_created = models.DateTimeField(verbose_name="date the data was collected")
+
+    @classmethod
+    def request_is_valid(cls, request, payload):
+        # Check if it is an Ajax request and a POST request
+        if not request.is_ajax():
+            return False, _("Only Ajax calls are permitted")
+        if not request.method == 'POST':
+            return False, _("Only POST requests are permistted")
+        if not payload:
+            return False, _("No text to search provided")
+        if not isinstance(payload, str):
+            return False, _("Invalid search object")
+        return True, ""

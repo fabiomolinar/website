@@ -23,3 +23,5 @@ DATABASES = {
 DATABASE_ROUTERS = [
     'ali.routers.AliRouter',
 ]
+
+SCRAPYD_HOST = 'localhost'
