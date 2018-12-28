@@ -1,6 +1,7 @@
 """Ali App Models
 
-This module contains classes which encapsulate the logic necessary to read search queries results done at AliExpress website using the AliExpress scrapy spider.
+This module contains classes which encapsulate the logic necessary to read 
+search queries results done at AliExpress website using the AliExpress scrapy spider.
 
 """
 from django.db import models
@@ -12,14 +13,17 @@ class SearchManager(models.Manager):
     """Manager with table-wide methods for the general search type results class"""
 
     def exists_current(self, search_text, days_to_check):
-        """Checks if there is an entry for a certain text that is not older than a predefined number of days
+        """
+        Checks if there is an entry for a certain text that is not older than a 
+        predefined number of days
 
         Args:
             search_text: the text to be searched
             days_to_check: how many days old the latest entry can be
 
         Returns:
-            (True, most updated entry) if an entry exists that is not too old, (False, None) otherwise 
+            (True, most updated entry) if an entry exists that is not too old, 
+            (False, None) otherwise
         """
         query = self.filter(search_text=search_text).order_by('-date_created')
         if query.count() != 0:
@@ -27,6 +31,38 @@ class SearchManager(models.Manager):
             time_diff = timezone.now() - last_entry.date_created
             if time_diff.days <= days_to_check:
                 return True, last_entry
+        return False, None
+
+    def listen_for_notify(self, search_text, search_timeout):
+        """
+        Listen for notify events on the DB and check if they notify the 
+        desired text or if the DB notifies an empty search result
+
+        Args:
+            search_text: the text to be listening to as payload from NOTIFY
+            search_timeout: the listening timeout period
+
+        Returns:
+            (False, None) if nothing is listened
+            (True, False) if listened for the desired payload
+            (True, True) if listened for empty results payload
+        """
+        import select
+        from django.db import connection as conn
+        with conn.cursor() as curs:
+            curs.execute("LISTEN ali_search;")
+            timeout = timezone.now() + timezone.timedelta(0, search_timeout)
+            while timezone.now() < timeout:
+                time_diff = timeout - timezone.now()
+                if select.select([conn], [], [], float(time_diff.seconds)) == ([], [], []):
+                    return False, None
+                conn.poll()
+                while conn.notifies:
+                    notify = conn.notifies.pop(0)
+                    if notify.payload == search_text:
+                        return True, False
+                    if notify.payload == 'search request returned empty':
+                        return True, True
         return False, None
 
 class Search(models.Model):
@@ -82,3 +118,26 @@ class Search(models.Model):
         if not isinstance(payload, str):
             return False, _("Invalid search object")
         return True, ""
+
+    @classmethod
+    def send_request_to_server(cls, search_text, host):
+        """Send HTTP POST request to scrapy server
+
+        Args:
+            search_text: text to be searched by the search spider
+            host: scrapy server host
+
+        Returns:
+            True if HTTP response status equals 200, False otherwise
+        """
+        import requests
+        url = "http://" + host + ":6800/schedule.json"
+        payload = {
+            'project': 'ali',
+            'spider': 'search',
+            'searchtext': search_text
+        }
+        scrapyd_request = requests.post(url, params=payload)
+        if scrapyd_request.status_code == 200:
+            return True
+        return False

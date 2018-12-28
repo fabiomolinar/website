@@ -97,6 +97,7 @@ var _ali = (function(toast){
             } else {
                 aliResults.insertData(data);
                 dataTable.removeClass("d-none");
+                searchForm.removeClass("was-validated");
             }
         }).fail(function(jqXHR, textStatus, errorThrown){
             let msg = "";

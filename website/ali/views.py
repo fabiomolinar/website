@@ -24,57 +24,21 @@ def run_search(request):
     request_ok, failure_message = Search.request_is_valid(request, text_to_search)
     if not request_ok:
         return HttpResponseBadRequest(failure_message)
-        
-    exist_current, current = Search.objects.exists_current(search_text=text_to_search,days_to_check=settings.ALI_SEARCH_CACHE)
+    # Check if not old entry exists
+    exist_current, current = Search.objects.exists_current(search_text=text_to_search, days_to_check=settings.ALI_SEARCH_CACHE)
     if exist_current:
         return JsonResponse(model_to_dict(current))
-
-    # If not, send request to Scrapyd to get the data
-    url = "http://" + settings.SCRAPYD_HOST + ":6800/schedule.json"
-    payload = {
-        'project': 'ali',
-        'spider': 'search',
-        'searchtext': text_to_search
-    }
-    scrapyd_request = requests.post(url, params=payload)
-    if not scrapyd_request.status_code == 200:
+    # Make HTTP request to scrapy server
+    request_sent = Search.send_request_to_server(search_text=text_to_search, host=settings.SCRAPYD_HOST)
+    if not request_sent:
         return HttpResponseServerError(_("Collector server error"))
-    # DB listener
-    db_settings = settings.DATABASES['ali']
-    conn = psycopg2.connect(dbname=db_settings['NAME'], 
-                            user=db_settings['USER'], 
-                            password=db_settings['PASSWORD'], 
-                            host=db_settings['HOST'], 
-                            port=db_settings['PORT'])
-    conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
-    curs = conn.cursor()
-    curs.execute("LISTEN ali_search;")
-    timeout = timezone.now() + timezone.timedelta(0, settings.ALI_SEARCH_TIMEOUT)
-    listened = False
-    returned_empty = True
-    while timezone.now() < timeout:
-        time_diff = timeout - timezone.now()
-        if select.select([conn], [], [], float(time_diff.seconds)) == ([], [], []):
-            listened = False
-            timeout = timezone.now()
-        else:
-            conn.poll()
-            while conn.notifies:
-                notify = conn.notifies.pop(0)
-                if notify.payload == text_to_search:
-                    listened = True
-                    returned_empty = False
-                    timeout = timezone.now()
-                elif notify.payload == 'search request returned empty':
-                    listened = True
-                    returned_empty = True
-                    timeout = timezone.now()
-    curs.close()
-    conn.close()
+    # listen for DB NOTIFY
+    listened, returned_empty = Search.objects.listen_for_notify(search_text=text_to_search, search_timeout=settings.ALI_SEARCH_TIMEOUT)
     if not listened:
         return HttpResponseServerError(_("Collector server timed out"))
     if returned_empty:
-        return JsonResponse({'returned_empty': True})
+        return JsonResponse({'returned_empty': True})    
+    # HTTP request to scrapy server is done and listened to DB NOTIFY, then we just need to get the latest result
     query = Search.objects.filter(search_text=text_to_search).order_by('-date_created')
     if query.count() != 0:
         last_entry = query[0]
