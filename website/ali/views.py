@@ -25,14 +25,9 @@ def run_search(request):
     if not request_ok:
         return HttpResponseBadRequest(failure_message)
         
-    # Check if the same search has been done in the last few days (set by ALI_SEARCH_CACHE setting)
-    query = Search.objects.filter(search_text=text_to_search).order_by('-date_created')
-    if query.count() != 0:
-        last_entry = query[0]
-        days_to_cache = settings.ALI_SEARCH_CACHE
-        time_diff = timezone.now() - last_entry.date_created
-        if time_diff.days <= days_to_cache:
-            return JsonResponse(model_to_dict(last_entry))
+    exist_current, current = Search.objects.exists_current(search_text=text_to_search,days_to_check=settings.ALI_SEARCH_CACHE)
+    if exist_current:
+        return JsonResponse(model_to_dict(current))
 
     # If not, send request to Scrapyd to get the data
     url = "http://" + settings.SCRAPYD_HOST + ":6800/schedule.json"

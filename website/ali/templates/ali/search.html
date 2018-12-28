@@ -14,19 +14,21 @@
 {% block head %}
     <!-- FontAwesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 {% endblock head %}
 
 {% block base-content %}
     <div class="jumbotron">
-        <h2 class="display-4">AliExpress Search</h2>
-        <p class="lead">Get statistical data collected from the first page of a search performed at AliExpress website.</p>
+        <h2 class="display-4">{% blocktrans %}AliExpress Search{% endblocktrans %}</h2>
+        <p class="lead">{% blocktrans %}Get statistical data collected from the first page of a search performed at AliExpress website.{% endblocktrans %}</p>
     </div>
     <div class="container-fluid">
         <div class="row flex-xl">
             <div class="col-12 bd-content">
-                <h2>How it works</h2>
-                <p>Define below from which product/category would you like to collect data from AliExpress.</p>
-                <p>On the background, our server will access the AliExpress website, perform the search for your selected product/category, read the data from the first page of results and return a summary with statistical data collected from it.</p>
+                <h2>{% blocktrans %}How it works{% endblocktrans %}</h2>
+                <p>{% blocktrans %}Define below from which product/category would you like to collect data from AliExpress.{% endblocktrans %}</p>
+                <p>{% blocktrans %}On the background, our server will access the AliExpress website, perform the search for your selected product/category, read the data from the <strong>first page</strong> of results and return a summary with statistical data collected from it.{% endblocktrans %}</p>
                 <p>
                     <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse" data-target="#FAQ" aria-expanded="false" aria-controls="FAQ">
                         More details/FAQ
@@ -35,17 +37,26 @@
                 <div class="collapse" id="FAQ">
                     <div class="card card-body">
                         <ul>
-                            <li>Is data collected from all page results?</li>
+                            <li>{% blocktrans %}Is data collected from all page results?{% endblocktrans %}</li>
                             <ul>
-                                <li>No. Data is collected only from the first page. That would not be polite to AliExpress and it would overload their server with undesirable requests.</li>
+                                <li>{% blocktrans %}No. Data is collected only from the first page. That would not be polite to AliExpress and it would overload their server with undesirable requests.{% endblocktrans %}</li>
                             </ul>
-                            <li>Are the results live?</li>
+                            <li>{% blocktrans %}Are the results live?{% endblocktrans %}</li>
                             <ul>
-                                <li>They could be. If there aren't any previous search requests for the same category/product, we will run the search live and your results will be current.</li>
-                                <li>Now, if your category/product has been already searched in the last 3 days, the cached results will be returned instead. If it has already been searched but the results are older than 3 days, a new search is done and your results will be current.</li>
-                                <li>In other words, if your product/category is frequently searched, you may not get live results.</li>
-                                <li>But also no results can be older than 3 days.</li>
-                                <li>Again, this is done in order to respect the target server.</li>
+                                <li>{% blocktrans %}They could be. If there aren't any previous search requests for the same category/product, we will run the search live and your results will be current.{% endblocktrans %}</li>
+                                <li>{% blocktrans %}Now, if your category/product has been already searched in the last 3 days, the cached results will be returned instead. If it has already been searched but the results are older than 3 days, a new search is done and your results will be current.{% endblocktrans %}</li>
+                                <li>{% blocktrans %}In other words, if your product/category is frequently searched, you may not get live results.{% endblocktrans %}</li>
+                                <li>{% blocktrans %}But also no results can be older than 3 days.{% endblocktrans %}</li>
+                                <li>{% blocktrans %}Again, this is done in order to respect the target server.{% endblocktrans %}</li>
+                            </ul>
+                            <li>{% blocktrans %}Are any filters used while performing the search?{% endblocktrans %}</li>
+                            <ul>
+                                <li>{% trans "No." %}</li>
+                            </ul>
+                            <li>{% blocktrans %}Have questions or would like <strong>additional/new features</strong>?{% endblocktrans %}</li>
+                            <ul>
+                                {% url 'contact' as contact_url %}
+                                <li>{% blocktrans %}Get in <a href="{{ contact_url }}">contact</a>.{% endblocktrans %}</li>
                             </ul>
                         </ul>
                     </div>
@@ -58,10 +69,10 @@
                 <form action="{% url 'ali:run_search' %}" method="POST" id="form_request" novalidate>
                     {% csrf_token %}
                     <div class="form-group">
-                        <input type="text" name="text" class="form-control form-control-lg text-center" placeholder="Text to be searched" required>
-                        <div class="invalid-feedback">This field is required</div>
+                        <input type="text" name="text" class="form-control form-control-lg text-center" placeholder="{% blocktrans %}Text to be searched{% endblocktrans %}" required>
+                        <div class="invalid-feedback">{% blocktrans %}This field is required{% endblocktrans %}</div>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block" id="submit_request">Search</button>
+                    <button type="submit" class="btn btn-primary btn-block" id="submit_request">{% trans "Search" %}</button>
                 </form>
             </div>
         </div>
@@ -79,50 +90,65 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col"></th>
-                                <th scope="col">Corrected</th>
-                                <th scope="col">Non-corrected</th>
-                                <th scope="col">(Non-corrected - Corrected)</th>
+                                <th scope="col">
+                                    {% trans "Corrected" %} <span data-toggle="tooltip" data-placement="top" 
+                                                    title="{% blocktrans %}Calculations done with outliers removed from sample.{% endblocktrans %}">
+                                        <span class="far fa-question-circle"></span>
+                                    </span>
+                                </th>
+                                <th scope="col">{% trans "Non-corrected" %}</th>
+                                <th scope="col">{% blocktrans %}(Non-corrected - Corrected){% endblocktrans %}</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr id="results">
-                                <th scope="row">Number of products</th>
+                                <th scope="row">
+                                    {% blocktrans %}Items being sold{% endblocktrans %} <span data-toggle="tooltip" data-placement="top" 
+                                                            title="{% blocktrans %}Total number of items being sold at AliExpress.{% endblocktrans %}">
+                                        <span class="far fa-question-circle"></span>
+                                    </span>
+                                </th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr id="min">
-                                <th scope="row">Minimum price</th>
+                                <th scope="row">{% blocktrans %}Minimum price{% endblocktrans %}</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr id="mean" class="table-primary">
-                                <th scope="row">Mean price</th>
+                                <th scope="row">{% blocktrans %}Mean price{% endblocktrans %}</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr id="avg">
-                                <th scope="row">Average price</th>
+                                <th scope="row">{% blocktrans %}Average price{% endblocktrans %}</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr id="max">
-                                <th scope="row">Maximum price</th>
+                                <th scope="row">{% blocktrans %}Maximum price{% endblocktrans %}</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr id="std">
-                                <th scope="row">Standard deviation</th>
+                                <th scope="row">{% blocktrans %}Price - standard deviation{% endblocktrans %}</th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
                             </tr>
                             <tr id="points">
-                                <th scope="row">Number of points</th>
+                                    <th scope="row">
+                                            {% blocktrans %}Sample size{% endblocktrans %} <span data-toggle="tooltip" data-placement="top" data-html="true"
+                                                                    title="{% blocktrans %}Number of products included in the calculations.<br>For the non-corrected calculation, that's usually the total number of products returned at the <strong>first page</strong> of the AliExpress search results page.{% endblocktrans %}">
+                                                <span class="far fa-question-circle"></span>
+                                            </span>
+                                        </th>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -135,5 +161,7 @@
     </div>
 {% endblock base-content %}
 {% block scripts %}
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{% static 'ali/script.js' %}"></script>
 {% endblock scripts %}

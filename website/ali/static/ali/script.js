@@ -1,4 +1,8 @@
 var _ali = (function(toast){
+    // Initialization
+    window.onload = function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    }
     toast.options = {
         "positionClass": "toast-bottom-center",
         "showDuration": "600"
