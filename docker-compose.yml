@@ -12,9 +12,10 @@ services:
       - nginx_network
       - website_db_network
       - collector_network
+      - rabbitmq_network
     depends_on:
       - website_db
-    command: ["gunicorn", "--bind", ":8000", "website.wsgi:application"]
+      - rabbitmq
 
   nginx:
     image: nginx:1.15
@@ -52,6 +53,17 @@ services:
     depends_on:
       - website_db
 
+  rabbitmq:
+    build:
+      context: ./rabbitmq
+      dockerfile: Dockerfile
+    hostname: "rabbitmq"
+    image: rabbitmq
+    networks: 
+      - rabbitmq_network
+    volumes:
+      - rabbitmq_volume:/var/lib/rabbitmq
+
 networks:
   nginx_network:
     driver: bridge
@@ -59,8 +71,11 @@ networks:
     driver: bridge
   collector_network:
     driver: bridge
+  rabbitmq_network:
+    driver: bridge
 
 volumes:
   website_db_volume:
   static_volume:
   media_volume:
+  rabbitmq_volume:

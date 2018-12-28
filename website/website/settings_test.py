@@ -20,8 +20,11 @@ DATABASES = {
     }
 }
 
-DATABASE_ROUTERS = [
-    'ali.routers.AliRouter',
-]
-
+# Scrapyd 
 SCRAPYD_HOST = 'localhost'
+
+# Celery
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'pyamqp://'
+CELERY_TIMEZONE = 'Europe/Warsaw'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'

@@ -184,3 +184,35 @@ $ sudo -u mysite psql mysite
 mysite=> ALTER USER mysite WITH PASSWORD '<new password here>';
 mysite=> \q
 ```
+
+## Celery
+
+Broker: RabbitMQ
+Results backend: django-db
+Scheduler: Celery beat
+
+### Starting the server
+
+`celery -A <project name> worker --loglevel=info`, e.g.:
+
+`celery -A website worker --loglevel=info` (ran from the same folder that contains `manage.py`).
+
+If we want to start it on the background, sufices to use `--detach`.
+
+### Starting the beat service
+
+`celery -A <project name> beat`, or using the `worker` command:
+
+`celery -A <project name> worker -B`. This option is convenient if **never running more than one worker node**, but it’s not recommended for production use.
+
+To start it on the background, use `--detach`.
+
+### Changing timezone
+
+If changing timezone settings, we need to update the scheduled tasks. To do that:
+
+```bash
+python manage.py shell
+>>> from django_celery_beat.models import PeriodicTask
+>>> PeriodicTask.objects.update(last_run_at=None)
+```

@@ -9,6 +9,9 @@ gunicorn = "==19.9.0"
 "psycopg2-binary" = "==2.7.6"
 "django-blog-zinnia" = "==0.20"
 requests = "==2.21.0"
+celery = "==4.2.1"
+"django-celery-results" = "==1.0.4"
+"django-celery-beat" = "==1.4.0"
 
 [requires]
 python_version = "3.6"

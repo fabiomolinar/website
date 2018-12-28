@@ -35,6 +35,8 @@ ALLOWED_HOSTS = ['localhost']
 INSTALLED_APPS = [
     'base.apps.BaseConfig',
     'ali.apps.AliConfig',
+    'django_celery_results',
+    'django_celery_beat',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.sites',
@@ -159,7 +161,6 @@ SITE_ID = 1
 # ----- My settings -----
 
 # Zinnia
-
 ZINNIA_MARKUP_LANGUAGE = 'markdown'
 
 # Serving static files
@@ -167,10 +168,14 @@ STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
 
 # Scrapyd host
-
 SCRAPYD_HOST = 'collector'
-
 # How many days we will cache the results from a query
 ALI_SEARCH_CACHE = 3
 # How many seconds to wait while listening for an event from the DB (in seconds)
 ALI_SEARCH_TIMEOUT = 15
+
+# Celery
+CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'pyamqp://guest:guest@rabbitmq:5672/'
+CELERY_TIMEZONE = 'Europe/Warsaw'
+CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
