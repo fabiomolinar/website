@@ -5,14 +5,16 @@ from celery import shared_task
 from website import settings
 
 from .models import Search
+from .models import Tracker
 
 @shared_task
-def recurrent_search():
+def tracker_update():
     """Recurrent request to the ali search spider"""
 
-    text_to_search = "purse"
-    Search.send_request_to_server(text_to_search, settings.SCRAPYD_HOST)
+    Search.send_request_to_server(Tracker.objects.get_current_search(), settings.SCRAPYD_HOST)
 
 @shared_task
 def test_debug():
+    """Debug task for testing"""
+
     print("a simple test")

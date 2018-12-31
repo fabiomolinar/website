@@ -21,7 +21,7 @@ To run a migration and update the volume container, the following command can be
 
 While migrating tables only for a app on a different database, use the following command:
 
-`python manage.py <app name> --database=<database name>`
+`python manage.py migrate <app name> --database=<database name>`
 
 Additionally, if we don't want the migrations for a certain model to be ran on a certain DB, we need to **update the `allow_migrate()` method from its DB router (`routers.py`) correctly**.
 

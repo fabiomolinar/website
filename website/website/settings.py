@@ -173,6 +173,8 @@ SCRAPYD_HOST = 'collector'
 ALI_SEARCH_CACHE = 3
 # How many seconds to wait while listening for an event from the DB (in seconds)
 ALI_SEARCH_TIMEOUT = 15
+# Default tracker
+ALI_DEFAULT_TRACKER = 'mp3'
 
 # Celery
 CELERY_RESULT_BACKEND = 'django-db'

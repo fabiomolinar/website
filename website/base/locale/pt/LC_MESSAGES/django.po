@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-17 21:36+0100\n"
+"POT-Creation-Date: 2018-12-31 11:02+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgstr ""
 msgid "A little about me."
 msgstr "Um pouco sobre mim."
 
-#: templates/base/about.html:11 templates/base/index.html:11
+#: templates/base/about.html:11 templates/base/index.html:12
 #: templates/base/projects.html:11
 msgid ""
 "Fabio Thomaz Molinar, Fabio Molinar, Blog, Personal site, Projects, Web, "
@@ -31,12 +31,13 @@ msgstr ""
 "Fabio Thomaz Molinar, Fabio Molinar, Blog, Site pessoal, Projetos, Web, "
 "Desenvolvimento, IoT, Indústria 4.0, Turbinas a Gás"
 
-#: templates/base/about.html:12 templates/base/index.html:12
+#: templates/base/about.html:12 templates/base/index.html:13
 #: templates/base/projects.html:12
 msgid "IoT, Industry 4.0, Gas Turbines, Utilities, Power, Power generation"
-msgstr "IoT, Indústria 4.0, Turbinas a Gás, Utilidades, Energia, Produção de Energia"
+msgstr ""
+"IoT, Indústria 4.0, Turbinas a Gás, Utilidades, Energia, Produção de Energia"
 
-#: templates/base/about.html:22 templates/base/base.html:56
+#: templates/base/about.html:22 templates/base/base.html:57
 msgid "About"
 msgstr "Sobre"
 
@@ -57,15 +58,20 @@ msgid ""
 "creating to spin up the turbine's shaft and produce huge amounts of energy "
 "to the power grid!"
 msgstr ""
-"Sou um <strong>Engenheiro de Control de Turbinas a Gás</strong> e passionado por "
-"tecnologia, teoria de controle e aplicações web. Com o intuito de ser capaz de trabalhar "
-"com vários tipos diferentes de sistemas de controle, acabei aprendendo a dominar teoria de controle "
-"para poder implementá-la em diferentes sistemas de controle. Me tornando assim, independente de qualquer plataforma "
-"específica. Dou valor a honestidade, fortes parcerias e colaboração. Sou uma pessoa de mente aberta e estou sempre "
-"a procura de me desenvolver tecnicamente e como pessoa, assim como desenvolver aqueles a minha volta. Aprecio desenvolver "
-"software de controle para turbinas a gás, seja utilizando MarkVIe, RX3i, Micronet, Netmation, T3000 ou outras plataformas. "
-"Na minha atual posição, adoro a liberdade e variedade com a qual temos que lidar para resolver nossos desafios. Mas, sem dúvias, "
-"eu gosto mesmo é de ver o software que ajudei a criar a rodar as turbinas a gás e a produzir enormes quantidades de energia para o sistema elétrico."
+"Sou um <strong>Engenheiro de Control de Turbinas a Gás</strong> e passionado "
+"por tecnologia, teoria de controle e aplicações web. Com o intuito de ser "
+"capaz de trabalhar com vários tipos diferentes de sistemas de controle, "
+"acabei aprendendo a dominar teoria de controle para poder implementá-la em "
+"diferentes sistemas de controle. Me tornando assim, independente de qualquer "
+"plataforma específica. Dou valor a honestidade, fortes parcerias e "
+"colaboração. Sou uma pessoa de mente aberta e estou sempre a procura de me "
+"desenvolver tecnicamente e como pessoa, assim como desenvolver aqueles a "
+"minha volta. Aprecio desenvolver software de controle para turbinas a gás, "
+"seja utilizando MarkVIe, RX3i, Micronet, Netmation, T3000 ou outras "
+"plataformas. Na minha atual posição, adoro a liberdade e variedade com a "
+"qual temos que lidar para resolver nossos desafios. Mas, sem dúvias, eu "
+"gosto mesmo é de ver o software que ajudei a criar a rodar as turbinas a gás "
+"e a produzir enormes quantidades de energia para o sistema elétrico."
 
 #: templates/base/about.html:28
 msgid ""
@@ -77,11 +83,13 @@ msgid ""
 "of Things are probably going to bring. I hope to be part of those helping "
 "shaping that change and bringing a better future for generations to come."
 msgstr ""
-"No meu tempo fora do escritório sou um <strong>programador web</strong>. Sou fascinado pelo "
-"poder das tecnologias web de trazer pessoas, recursos, e máquinas juntos. Nesse campo também sou capaz de "
-"trabalhar com vários stacks diferentes, tanto no front-end como no back-end. Sem dúvida, estou ansioso "
-"pelo nosso futuro interconectado e pela revolução que a internet das coisas provavelmente irão nos trazer. "
-"Espero poder fazer parte daqueles ajudando a formar essa mudança e trazer um melhor futuro para gerações futuras."
+"No meu tempo fora do escritório sou um <strong>programador web</strong>. Sou "
+"fascinado pelo poder das tecnologias web de trazer pessoas, recursos, e "
+"máquinas juntos. Nesse campo também sou capaz de trabalhar com vários stacks "
+"diferentes, tanto no front-end como no back-end. Sem dúvida, estou ansioso "
+"pelo nosso futuro interconectado e pela revolução que a internet das coisas "
+"provavelmente irão nos trazer. Espero poder fazer parte daqueles ajudando a "
+"formar essa mudança e trazer um melhor futuro para gerações futuras."
 
 #: templates/base/about.html:29
 msgid "For more details, take a look at my LinkedIn page."
@@ -104,8 +112,8 @@ msgid ""
 "Been playing around with PHP, Javascript, Python, Laravel, Android, "
 "PhoneGap, Meteor.js, Node.js, Angular, React, Bootstrap."
 msgstr ""
-"Trabalhando com PHP, Javascript, Python, Laravel, Android, "
-"PhoneGap, Meteor.js, Node.js, Angular, React, Bootstrap."
+"Trabalhando com PHP, Javascript, Python, Laravel, Android, PhoneGap, Meteor."
+"js, Node.js, Angular, React, Bootstrap."
 
 #: templates/base/about.html:45
 msgid ""
@@ -114,10 +122,10 @@ msgid ""
 "are mostly writte in Python using Django. And its apps are powered by "
 "Scrapy, scikit-learn, numpy and pandas."
 msgstr ""
-"Mas mais recentemente decidi estabelecer e focar meus esforços no Python "
-"e sua coleção impecável de frameworks e bibliotecas. Esse site e seu conteúdo foram "
-"escritos quase que exclusivamente em Python usando Django. E seus aplicativos são baseados em "
-"Scrapy, scikit-learn, numpy e pandas."
+"Mas mais recentemente decidi estabelecer e focar meus esforços no Python e "
+"sua coleção impecável de frameworks e bibliotecas. Esse site e seu conteúdo "
+"foram escritos quase que exclusivamente em Python usando Django. E seus "
+"aplicativos são baseados em Scrapy, scikit-learn, numpy e pandas."
 
 #: templates/base/about.html:53
 msgid "Lead Gas Turbines Controls Engineer"
@@ -142,10 +150,10 @@ msgid ""
 "(oOEM). Main development done with Diasys Netmation controller for "
 "Mitsubishi turbines and T3000 for Siemens turbines."
 msgstr ""
-"Trabalhando para a GE Cross-Fleet Gas Turbines Solutions. Responsável por desenvolver "
-"projetos de sistemas de controle para turbinas heavy-duty de outros fabricantes (oOEM). "
-"Principal foco nos sistemas Diasys Netmation em turbinas Mitsubishi e T3000 "
-"em turbinas Siemens."
+"Trabalhando para a GE Cross-Fleet Gas Turbines Solutions. Responsável por "
+"desenvolver projetos de sistemas de controle para turbinas heavy-duty de "
+"outros fabricantes (oOEM). Principal foco nos sistemas Diasys Netmation em "
+"turbinas Mitsubishi e T3000 em turbinas Siemens."
 
 #: templates/base/about.html:58
 msgid ""
@@ -154,9 +162,10 @@ msgid ""
 "Proficy Machine Edition (RX3i). Provide customer support on the "
 "aforementioned turbine control."
 msgstr ""
-"Desenvolvimento do sistema de controle das turbinas aeroderivativas LM2500, LM6000 e LMS da GE "
-"usando GAP (Micronet - Woodward), ToolboxST (MarkVIe - GE) e Proficy Machine Edition (RX3i). "
-"Responsável também por prover suporte aos clientes com relação a as turbinas já mencionadas."
+"Desenvolvimento do sistema de controle das turbinas aeroderivativas LM2500, "
+"LM6000 e LMS da GE usando GAP (Micronet - Woodward), ToolboxST (MarkVIe - "
+"GE) e Proficy Machine Edition (RX3i). Responsável também por prover suporte "
+"aos clientes com relação a as turbinas já mencionadas."
 
 #: templates/base/about.html:66
 msgid "Information Systems Project Management"
@@ -207,9 +216,9 @@ msgid ""
 "customers and empowering restaurant owners with data and insights to drive "
 "their strategy and restaurant improvements."
 msgstr ""
-"Serviço web focado em aprimorar a experiência do usuário de restaurantes "
-"e fortalecer donos de restaurates com dados e dicas para guiar suas estrataégias "
-"e melhorias."
+"Serviço web focado em aprimorar a experiência do usuário de restaurantes e "
+"fortalecer donos de restaurates com dados e dicas para guiar suas "
+"estrataégias e melhorias."
 
 #: templates/base/about.html:84
 msgid ""
@@ -217,7 +226,8 @@ msgid ""
 "reports and feedback to restaurant owners to help driving their improvement."
 msgstr ""
 "A plataforma coletava dados dos usuários de restaurantes e criava relatórios "
-"especializados e feedback para os donos de restaurantes poderem guiar suas estratégias."
+"especializados e feedback para os donos de restaurantes poderem guiar suas "
+"estratégias."
 
 #: templates/base/about.html:92
 msgid "Gas Turbines Field Service Engineer"
@@ -230,9 +240,10 @@ msgid ""
 "compressors and electric generators of high power for power plants and for "
 "the oil & gas industry."
 msgstr ""
-"Responsável por comissionar, modificar, atualizar e realizar start-up de sistemas de automação "
-"e controle de máquinas rotativas, principalmente turbinas, compressores e geradores de alta "
-"potência para usinas elétricas e para o setor de óleo e gás."
+"Responsável por comissionar, modificar, atualizar e realizar start-up de "
+"sistemas de automação e controle de máquinas rotativas, principalmente "
+"turbinas, compressores e geradores de alta potência para usinas elétricas e "
+"para o setor de óleo e gás."
 
 #: templates/base/about.html:104
 msgid "Mechatronics Engineering"
@@ -264,49 +275,49 @@ msgid ""
 "discipline that applies automatic control theory to design systems with "
 "desired behaviors in control environments."
 msgstr ""
-"Engenharia de controle e automação é uma disciplina que busca aplicar "
-"teoria de controle para desenvolver sistemas com comportamentos desejados "
-"em ambientes de controle."
+"Engenharia de controle e automação é uma disciplina que busca aplicar teoria "
+"de controle para desenvolver sistemas com comportamentos desejados em "
+"ambientes de controle."
 
 #: templates/base/about.html:123
 msgid ""
 "Extra activities and societies: junior company, researcher in economics."
-msgstr ""
-"Atividades extras: empresa júnior, pesquisador em economia."
+msgstr "Atividades extras: empresa júnior, pesquisador em economia."
 
 #: templates/base/about.html:124
 msgid ""
 "Thesis: energy control and management in a DC bus supplied by power sources "
 "with different electric and dynamic characteristics."
 msgstr ""
-"Gerenciamento do fluxo de energia em um barramento alimentado por diferentes fontes."
+"Gerenciamento do fluxo de energia em um barramento alimentado por diferentes "
+"fontes."
 
-#: templates/base/base.html:14 templates/base/index.html:8
+#: templates/base/base.html:15 templates/base/index.html:9
 msgid ""
 "Fabio's personal website. Despite being my hobby, it is also used as a "
 "testing environment for my side projects."
 msgstr ""
-"Site pessoal do Fabio. Apesar de ser um hobby, também é utilizado como ambiente "
-"de teste para meus projetos secundários."
+"Site pessoal do Fabio. Apesar de ser um hobby, também é utilizado como "
+"ambiente de teste para meus projetos secundários."
 
 #. Translators: Home as the home page of a website
-#: templates/base/base.html:41
+#: templates/base/base.html:42
 msgid "Home"
 msgstr "Página Inicial"
 
-#: templates/base/base.html:46 templates/base/projects.html:17
+#: templates/base/base.html:47 templates/base/projects.html:17
 msgid "Projects"
 msgstr "Projetos"
 
-#: templates/base/base.html:51
+#: templates/base/base.html:52
 msgid "Blog"
 msgstr "Blog"
 
-#: templates/base/base.html:61 templates/base/contact.html:20
+#: templates/base/base.html:62 templates/base/contact.html:20
 msgid "Contact"
 msgstr "Contato"
 
-#: templates/base/base.html:98
+#: templates/base/base.html:99
 msgid "Copyright"
 msgstr "Direitos autorais"
 
@@ -322,19 +333,19 @@ msgstr "Fabio Thomaz Molinar, Fabio Molinar, Contato"
 msgid "Get in touch..."
 msgstr "Entre em contato..."
 
-#: templates/base/index.html:17
+#: templates/base/index.html:18
 msgid "Hi, I'm Fabio."
 msgstr "Olá, me chamo Fábio."
 
-#: templates/base/index.html:18
+#: templates/base/index.html:19
 msgid "Web developer, Industrial Automation Engineer, Husband & Father."
 msgstr "Programador Web, Engenheiro de Controle e Automação, Marido & Pai."
 
-#: templates/base/index.html:23
+#: templates/base/index.html:24
 msgid "Welcome to my personal website."
 msgstr "Bem vindo ao meu site pessoal."
 
-#: templates/base/index.html:26
+#: templates/base/index.html:27
 #, python-format
 msgid ""
 "This is the place where I run some of my personal <a href=\"%(project_url)s"
@@ -345,13 +356,29 @@ msgstr ""
 "\">projetos</a> pessoais e onde tiro meus hobbies do papel. É também o local "
 "onde se encontra meu <a href=\"%(blog_url)s\">blog</a>."
 
-#: templates/base/index.html:27
+#: templates/base/index.html:28
 msgid ""
 "This is where I come to when I am not at work, when my wife is busy and my "
 "children are sleeping. :)"
 msgstr ""
 "É para aqui que venho quando não estou no trabalho, quando minha esposa está "
 "ocupada e meus filhos estão dormindo."
+
+#: templates/base/index.html:33 templates/base/index.html:36
+msgid "Website architecture"
+msgstr "Arquitetura do site"
+
+#: templates/base/index.html:34
+msgid ""
+"Below an illustrative image of the current state of this website's "
+"architecture"
+msgstr ""
+"Abaixo uma figura ilustrativa da atual arquitetura "
+"desse site"
+
+#: templates/base/index.html:35
+msgid "The green dotted lines represent different Docker containers"
+msgstr "Os retângulos verdes com linhas listradas representam diferentes containers Docker"
 
 #: templates/base/projects.html:24
 msgid "This website"
@@ -362,8 +389,8 @@ msgid ""
 "This website is powered by Django and its technology stack include Docker, "
 "Nginx and Gunicorn. At least for now."
 msgstr ""
-"Esse site é baseado em Django e seu technology stack inclui Docker, "
-"Nginx e Gunicorn. Ao menos por enquanto."
+"Esse site é baseado em Django e seu technology stack inclui Docker, Nginx e "
+"Gunicorn. Ao menos por enquanto."
 
 #: templates/base/projects.html:34 templates/base/projects.html:46
 #: templates/base/projects.html:59
@@ -380,9 +407,9 @@ msgid ""
 "create one from scratch. Django's app structure and Zinnia came in handy so "
 "I could achieve just that."
 msgstr ""
-"Eu queria ser capaz de incluir um blog dentro do meu site sem ter que criar um "
-"do zero. A estrutura em aplicativos do Django e o Zinnia vieram a calhar para que eu "
-"conseguisse exatamente isso."
+"Eu queria ser capaz de incluir um blog dentro do meu site sem ter que criar "
+"um do zero. A estrutura em aplicativos do Django e o Zinnia vieram a calhar "
+"para que eu conseguisse exatamente isso."
 
 #: templates/base/projects.html:50
 msgid "Web Scraping - AliExpress"
@@ -392,4 +419,5 @@ msgstr "Web Scraping - AliExpress"
 msgid ""
 "A service that collects data about any products searchable at AliExpress."
 msgstr ""
-"Um serviço web que coleta dados de qualquer produto \"procurável\" no site AliExpress."
+"Um serviço web que coleta dados de qualquer produto \"procurável\" no site "
+"AliExpress."

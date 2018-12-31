@@ -1,6 +1,6 @@
 """Ali App Models
 
-This module contains classes which encapsulate the logic necessary to read 
+This module contains classes which encapsulate the logic necessary to read
 search queries results done at AliExpress website using the AliExpress scrapy spider.
 
 """
@@ -8,6 +8,7 @@ from django.db import models
 from django.contrib.postgres import fields as postgres_fields
 from django.utils.translation import gettext as _
 from django.utils import timezone
+from django.conf import settings
 
 class SearchManager(models.Manager):
     """Manager with table-wide methods for the general search type results class"""
@@ -35,7 +36,7 @@ class SearchManager(models.Manager):
 
     def listen_for_notify(self, search_text, search_timeout):
         """
-        Listen for notify events on the DB and check if they notify the 
+        Listen for notify events on the DB and check if they notify the
         desired text or if the DB notifies an empty search result
 
         Args:
@@ -48,22 +49,41 @@ class SearchManager(models.Manager):
             (True, True) if listened for empty results payload
         """
         import select
-        from django.db import connection as conn
-        with conn.cursor() as curs:
-            curs.execute("LISTEN ali_search;")
-            timeout = timezone.now() + timezone.timedelta(0, search_timeout)
-            while timezone.now() < timeout:
-                time_diff = timeout - timezone.now()
-                if select.select([conn], [], [], float(time_diff.seconds)) == ([], [], []):
-                    return False, None
+        import psycopg2
+        import psycopg2.extensions
+
+        from django.conf import settings
+        
+        db_data = settings.DATABASES['ali']
+        listened = None
+        returned_empty = None
+
+        conn = psycopg2.connect(dbname=db_data['NAME'], user=db_data['USER'], password=db_data['PASSWORD'], host=db_data['HOST'], port=db_data['PORT'])
+        conn.set_isolation_level(psycopg2.extensions.ISOLATION_LEVEL_AUTOCOMMIT)
+        curs = conn.cursor()
+        curs.execute("LISTEN ali_search;")
+
+        timeout = timezone.now() + timezone.timedelta(0, search_timeout)
+        while timezone.now() < timeout:
+            time_diff = timeout - timezone.now()
+            if select.select([conn], [], [], float(time_diff.seconds)) == ([], [], []):
+                listened = False
+                timeout = timezone.now()
+            else:
                 conn.poll()
                 while conn.notifies:
                     notify = conn.notifies.pop(0)
                     if notify.payload == search_text:
-                        return True, False
+                        listened = True
+                        returned_empty = False
+                        timeout = timezone.now()
                     if notify.payload == 'search request returned empty':
-                        return True, True
-        return False, None
+                        listened = True
+                        returned_empty = True
+                        timeout = timezone.now()
+        curs.close()
+        conn.close()
+        return listened, returned_empty
 
 class Search(models.Model):
     """Data returned from crawling a search results page from Ali"""
@@ -141,3 +161,29 @@ class Search(models.Model):
         if scrapyd_request.status_code == 200:
             return True
         return False
+
+class TrackerManager(models.Manager):
+    """Tracker manager"""
+
+    def get_current_search(self):
+        """Function to define which text is to be used for the tracker"""
+
+        text_to_search = "mp3"
+        if settings.ALI_DEFAULT_TRACKER:
+            text_to_search = settings.ALI_DEFAULT_TRACKER
+        # Get new value if one is defined on the DB
+        query = self.order_by('-id')
+        if query.count() != 0:
+            text_to_search = query[0].search_text
+        return text_to_search
+
+class Tracker(models.Model):
+    """
+    DB to keep track of item currently being used to feed the tracker view
+    and to store which ones have been used before.
+    """
+
+    objects = TrackerManager()
+
+    search_text = models.TextField(verbose_name="text used on the search query")
+    date_created = models.DateTimeField(verbose_name="date created", auto_now_add=True)

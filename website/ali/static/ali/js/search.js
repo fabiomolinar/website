@@ -1,4 +1,4 @@
-var _ali = (function(toast){
+var _aliSearch = (function(toast){
     // Initialization
     window.onload = function(){
         $('[data-toggle="tooltip"]').tooltip();

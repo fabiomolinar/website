@@ -1,0 +1,70 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    Contact
+{% endblock title %}
+{% block description %}
+    <meta name="description" content="{% blocktrans %}Tracking data of products from AliExpress{% endblocktrans %}" />
+{% endblock description%}
+{% block keywords %}
+    <meta name="keywords" content="{% blocktrans %}AliExpress, Data, Statistics, Summary, Automatic{% endblocktrans %}" />    
+{% endblock keywords%}
+{% block head %}
+    <!-- FontAwesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+{% endblock head %}
+
+{% block base-content %}
+    <div class="jumbotron">
+        <h2 class="display-4">{% blocktrans %}AliExpress Product Tracker{% endblocktrans %}</h2>
+        <p class="lead">{% blocktrans %}Timeseries of data related to products from AliExpress{% endblocktrans %}</p>
+    </div>
+    <div class="container-fluid">
+        <div class="row flex-xl">
+            <div class="col-12 bd-content">
+                <h2>{% blocktrans %}How it works{% endblocktrans %}</h2>
+                <p>{% blocktrans %}Our server collects data about a predefined product/category from AliExpress daily. This data is collected from AliExpress search results page. This data is shown in a graphical form below.{% endblocktrans %}</p>
+                <p>
+                    <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse" data-target="#FAQ" aria-expanded="false" aria-controls="FAQ">
+                        More details/FAQ
+                    </button>
+                </p>
+                <div class="collapse" id="FAQ">
+                    <div class="card card-body">
+                        <ul>
+                            <li>{% blocktrans %}Is data collected from all page results?{% endblocktrans %}</li>
+                            <ul>
+                                <li>{% blocktrans %}No. Data is collected only from the first page. That would not be polite to AliExpress and it would overload their server with undesirable requests.{% endblocktrans %}</li>
+                            </ul>
+                            <li>{% blocktrans %}Are any filters used while performing the search?{% endblocktrans %}</li>
+                            <ul>
+                                <li>{% trans "No." %}</li>
+                            </ul>
+                            <li>{% blocktrans %}Have questions or would like <strong>additional/new features</strong>?{% endblocktrans %}</li>
+                            <ul>
+                                {% url 'contact' as contact_url %}
+                                <li>{% blocktrans %}Get in <a href="{{ contact_url }}">contact</a>.{% endblocktrans %}</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row flex-xl">
+            <div class="col-12 bd-content">
+                <h3>Searched text: <strong id="searchText">{{ search_text }}</strong></h3>
+                <p id="results_spinner" class="text-center d-none"><span class="fas fa-spinner fa-5x fa-spin" aria-hidden="true"></span></p>
+                <form action="{% url 'ali:get_tracker' %}" method="POST" id="form_request" class="d-none" novalidate>
+                    <input type="text" name="search_text" value="{{ search_text }}" disabled>
+                    {% csrf_token %}
+                </form>
+            </div>
+        </div>        
+    </div>
+{% endblock base-content %}
+{% block scripts %}
+    <script src="{% static 'ali/js/tracker.js' %}"></script>
+{% endblock scripts %}

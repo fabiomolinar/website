@@ -1,0 +1,233 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-31 11:02+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: models.py:113
+msgid "Only Ajax calls are permitted"
+msgstr "Apenas requisições do tipo Ajax são permitidas"
+
+#: models.py:115
+msgid "Only POST requests are permistted"
+msgstr "Apenas solicitações do tipo POST são permitidas"
+
+#: models.py:117
+msgid "No text to search provided"
+msgstr "Um texto para ser pesquisado não foi fornecido"
+
+#: models.py:119
+msgid "Invalid search object"
+msgstr "Tipo de dado para pesquisa incorreto"
+
+#: templates/ali/search.html:9
+msgid "Summary data of a search request to AliExpress"
+msgstr "Resumo dos dados retornados após uma requisição de pesquisa no AliExpress"
+
+#: templates/ali/search.html:12
+msgid "AliExpress, Data, Statistics, Summary, Automatic"
+msgstr "AliExpress, Dados, Estatística, Resumo, Automático"
+
+#: templates/ali/search.html:23
+msgid "AliExpress Search"
+msgstr "Pesquisa no AliExpress"
+
+#: templates/ali/search.html:24
+msgid ""
+"Get statistical data collected from the first page of a search performed at "
+"AliExpress website."
+msgstr ""
+"Veja dados estatísticos coletados da primeira página de resultados de pesquisa "
+"feitos no site do AliExpress"
+
+#: templates/ali/search.html:29
+msgid "How it works"
+msgstr "Como funciona"
+
+#: templates/ali/search.html:30
+msgid ""
+"Define below from which product/category would you like to collect data from "
+"AliExpress."
+msgstr ""
+"Define abaixo qual tipo de produto/categoria você gostaria de coletar dados "
+"do AliExpress"
+
+#: templates/ali/search.html:31
+msgid ""
+"On the background, our server will access the AliExpress website, perform "
+"the search for your selected product/category, read the data from the "
+"<strong>first page</strong> of results and return a summary with statistical "
+"data collected from it."
+msgstr ""
+"No fundo, nossos servidores acessam o site do AliExpress, fazem uma pesquisa "
+"pelo produto/categoria que você selecionou, coletam os dados da "
+"<strong>primeira página</strong> de resultados e retornam um resumo com dados "
+"estatísticos dos resultados da pesquisa."
+
+#: templates/ali/search.html:40
+msgid "Is data collected from all page results?"
+msgstr "Os dados são coletados de todas as páginas de resultados de pesquisa?"
+
+#: templates/ali/search.html:42
+msgid ""
+"No. Data is collected only from the first page. That would not be polite to "
+"AliExpress and it would overload their server with undesirable requests."
+msgstr ""
+"Não. Dados são coletados apenas da primeira página de resultados. Coletar "
+"dados de todas as páginas não seria educado com o AliExpress e poderia "
+"sobrecarregar o side deles com solicitações indesejadas."
+
+#: templates/ali/search.html:44
+msgid "Are the results live?"
+msgstr "Os resultados são atuais/correntes?"
+
+#: templates/ali/search.html:46
+msgid ""
+"They could be. If there aren't any previous search requests for the same "
+"category/product, we will run the search live and your results will be "
+"current."
+msgstr ""
+"Eles podem ser. Se não houver nenhuma requisição pelo mesmo "
+"produto/categoria nos últimos 3 dias, faremos a pesquisa na hora e os "
+"resultados retornados serão correntes."
+
+#: templates/ali/search.html:47
+msgid ""
+"Now, if your category/product has been already searched in the last 3 days, "
+"the cached results will be returned instead. If it has already been searched "
+"but the results are older than 3 days, a new search is done and your results "
+"will be current."
+msgstr ""
+"Agora, se o produto/categoria já tiver sido pesquisado nos últimos 3 dias, "
+"os resultados em cache serão retornados. Se a pesquisa já foi feita mas há "
+"mais de 3 dias atrás, uma nova pesquisa é feita e os resultados retornados "
+"serão correntes."
+
+#: templates/ali/search.html:48
+msgid ""
+"In other words, if your product/category is frequently searched, you may not "
+"get live results."
+msgstr ""
+"Em outras palavras, se o seu produto/categoria é pesquisado frequentemente, pode ser "
+"que os resultados não sejam correntes."
+
+#: templates/ali/search.html:49
+msgid "But also no results can be older than 3 days."
+msgstr "Mas nenhum resultado será mais velho do que 3 dias."
+
+#: templates/ali/search.html:50
+msgid "Again, this is done in order to respect the target server."
+msgstr "Novamente, isso é feito para respeitar o servidor alvo."
+
+#: templates/ali/search.html:52
+msgid "Are any filters used while performing the search?"
+msgstr "Algum filtro é utilizado para fazer a pesquisa?"
+
+#: templates/ali/search.html:54
+msgid "No."
+msgstr "Não."
+
+#: templates/ali/search.html:56
+msgid "Have questions or would like <strong>additional/new features</strong>?"
+msgstr "Tem alguma dúvida ou gostaria de <strong>recursos novos/adicionais</strong>?"
+
+#: templates/ali/search.html:59
+#, python-format
+msgid "Get in <a href=\"%(contact_url)s\">contact</a>."
+msgstr "Entre em <a href=\"%(contact_url)s\">contato</a>."
+
+#: templates/ali/search.html:72
+msgid "Text to be searched"
+msgstr "Texto a ser pesquisado"
+
+#: templates/ali/search.html:73
+msgid "This field is required"
+msgstr "Esse campo é obrigatório"
+
+#: templates/ali/search.html:75
+msgid "Search"
+msgstr "Buscar"
+
+#: templates/ali/search.html:94
+msgid "Corrected"
+msgstr "Corrigido"
+
+#: templates/ali/search.html:95
+msgid "Calculations done with outliers removed from sample."
+msgstr "Cálculos feitos com os outliers removidos da amostra."
+
+#: templates/ali/search.html:99
+msgid "Non-corrected"
+msgstr "Não-corrigido"
+
+#: templates/ali/search.html:100
+msgid "(Non-corrected - Corrected)"
+msgstr "(Não-corrigido - Corrigido)"
+
+#: templates/ali/search.html:106
+msgid "Items being sold"
+msgstr "Items à venda"
+
+#: templates/ali/search.html:107
+msgid "Total number of items being sold at AliExpress."
+msgstr "Número total de items à venda no AliExpress."
+
+#: templates/ali/search.html:116
+msgid "Minimum price"
+msgstr "Preço mínimo"
+
+#: templates/ali/search.html:122
+msgid "Mean price"
+msgstr "Preço mediano"
+
+#: templates/ali/search.html:128
+msgid "Average price"
+msgstr "Preço médio"
+
+#: templates/ali/search.html:134
+msgid "Maximum price"
+msgstr "Preço máximo"
+
+#: templates/ali/search.html:140
+msgid "Price - standard deviation"
+msgstr "Preço - desvio padrão"
+
+#: templates/ali/search.html:147
+msgid "Sample size"
+msgstr "Tamanho da amostra"
+
+#: templates/ali/search.html:148
+msgid ""
+"Number of products included in the calculations.<br>For the non-corrected "
+"calculation, that's usually the total number of products returned at the "
+"<strong>first page</strong> of the AliExpress search results page."
+msgstr ""
+"Número de produtos incluídos nos cálculos.<br>Para os cálculos dos dados "
+"não corrigidos, esse é geralmente o número total de produtos disponíveis na "
+"<strong>primeira página</strong> dos resultados da pesquisa no AliExpress."
+
+#: views.py:34
+msgid "Collector server error"
+msgstr "Erro no servidor collector"
+
+#: views.py:38
+msgid "Collector server timed out"
+msgstr "Servidor collector não respondendo"
+
+#: views.py:46
+msgid "No results found"
+msgstr "Nenhum resultado encontrado"

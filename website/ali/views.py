@@ -1,9 +1,3 @@
-import requests
-import psycopg2
-import psycopg2.extensions
-import select
-
-from django.utils import timezone
 from django.shortcuts import render, redirect
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseServerError
 from django.conf import settings
@@ -11,6 +5,7 @@ from django.forms.models import model_to_dict
 from django.utils.translation import gettext as _
 
 from ali.models import Search
+from ali.models import Tracker
 
 def index(request):
     respose = redirect('ali:search')
@@ -18,6 +13,14 @@ def index(request):
 
 def search(request):
     return render(request, 'ali/search.html')
+
+def tracker(request):
+    search_text = Tracker.objects.get_current_search()
+    return render(request, 'ali/tracker.html', {'search_text': search_text})
+
+# API
+def get_tracker(request):
+    return JsonResponse({'test': 'test'})
 
 def run_search(request):
     text_to_search = request.POST.get('text', None)
