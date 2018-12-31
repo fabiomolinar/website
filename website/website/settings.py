@@ -179,3 +179,4 @@ CELERY_RESULT_BACKEND = 'django-db'
 CELERY_BROKER_URL = 'pyamqp://guest:guest@rabbitmq:5672/'
 CELERY_TIMEZONE = 'Europe/Warsaw'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
+CELERY_BEAT_MAX_LOOP_INTERVAL = 300

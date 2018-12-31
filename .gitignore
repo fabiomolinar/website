@@ -3,6 +3,7 @@ logs/
 *.prod
 .vscode/
 **/*.prod
+**/celerybeat.pid
 
 # Github defaults
 # Byte-compiled / optimized / DLL files

@@ -29,6 +29,6 @@ RUN cd website/base && django-admin compilemessages
 # expose the port 8000
 EXPOSE 8000
 WORKDIR /opt/services/website/src/website
+
 # define the default command to run when starting the container
 CMD ["gunicorn", "--bind", ":8000", "website.wsgi:application"]
-#CMD celery -A website beat --detach && gunicorn --bind :8000 website.wsgi:application;

@@ -1,9 +1,10 @@
-version: '3'
+version: '3.7'
 
 services:
   website:
     build: .
     image: website
+    container_name: website
     volumes:
       - .:/opt/services/website/src
       - static_volume:/opt/services/website/static
@@ -16,9 +17,40 @@ services:
     depends_on:
       - website_db
       - rabbitmq
+    command: ["gunicorn", "--bind", ":8000", "website.wsgi:application"]
+
+  celery_beat:
+    build: .
+    image: celery_beat
+    container_name: celery_beat
+    volumes:
+      - .:/opt/services/website/src
+    networks: 
+      - website_db_network
+      - rabbitmq_network 
+    depends_on:
+      - website_db
+      - rabbitmq
+      - celery_worker
+    command: ["celery", "-A", "website", "beat"]
+
+  celery_worker:
+    build: .
+    image: celery_worker
+    container_name: celery_worker
+    volumes:
+      - .:/opt/services/website/src
+    networks: 
+      - website_db_network
+      - rabbitmq_network 
+    depends_on:
+      - website_db
+      - rabbitmq
+    command: ["celery", "-A", "website", "worker"]
 
   nginx:
     image: nginx:1.15
+    container_name: nginx
     ports:
       - "8000:80"
     volumes:
@@ -35,6 +67,7 @@ services:
       context: ./postgresql
       dockerfile: Dockerfile
     image: website_db
+    container_name: website_db
     env_file:
       - ./postgresql/env
     networks:
@@ -47,6 +80,7 @@ services:
       context: ../collector
       dockerfile: Dockerfile
     image: collector
+    container_name: collector
     networks:
       - website_db_network
       - collector_network
@@ -57,6 +91,7 @@ services:
     build:
       context: ./rabbitmq
       dockerfile: Dockerfile
+    container_name: rabbitmq
     hostname: "rabbitmq"
     image: rabbitmq
     networks: 

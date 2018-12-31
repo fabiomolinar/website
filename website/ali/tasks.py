@@ -12,3 +12,7 @@ def recurrent_search():
 
     text_to_search = "purse"
     Search.send_request_to_server(text_to_search, settings.SCRAPYD_HOST)
+
+@shared_task
+def test_debug():
+    print("a simple test")
