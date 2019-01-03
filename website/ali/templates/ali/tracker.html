@@ -1,5 +1,6 @@
 {% extends "base/base.html" %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 {% load static %}
 
 {% block title %}
@@ -60,11 +61,14 @@
                 <h3>Searched text: <strong>{{ search_text }}</strong></h3>
                 <p id="results_spinner" class="text-center"><span class="fas fa-spinner fa-5x fa-spin" aria-hidden="true"></span></p>
                 <button id="retry_button" type="button" class="btn btn-primary btn-lg btn-block d-none">Retry</button>
+                <div id="plotWrapper" class="d-none">
+                    <p>Values in <span style="color:rgb(0,100,80)">green</span> are related to the <span style="color:rgb(0,100,80)">corrected</span> calculations for outliers, whereas the ones in <span style="color:rgb(0,176,246)">blue</span> are <span style="color:rgb(0,176,246)">non-corrected</span>.</p>
+                    <div id="plot"></div>
+                </div>
                 <form class="d-none" action="{% url 'ali:get_tracker' %}" method="POST" id="form_request" class="d-none" novalidate>
                     <input type="text" name="search_text" value="{{ search_text }}" disabled>
                     {% csrf_token %}
-                </form>
-                <div id="plot"></div>
+                </form>       
             </div>
         </div>        
     </div>
@@ -72,7 +76,9 @@
 {% block scripts %}
     <!-- Toastr -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <!-- Plotlu -->
+    <!-- Plotly -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-locale-pt-br-latest.js"></script>
+
     <script src="{% static 'ali/js/tracker.js' %}"></script>
 {% endblock scripts %}

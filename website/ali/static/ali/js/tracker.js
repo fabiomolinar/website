@@ -6,10 +6,11 @@ var _aliTracker = (function(toast){
     let spinner = $("#results_spinner");
     let trackerForm = $("#form_request");
     let retryButton = $('#retry_button');
-    let plot = $('#plot');
+    let plotWrapper = $('#plotWrapper');
     window.onload = function(){
         spinner.removeClass("d-none");
         retryButton.addClass("d-none");
+        plotWrapper.addClass("d-none");
         trackerForm.submit();
     }
 
@@ -32,68 +33,72 @@ var _aliTracker = (function(toast){
             min_nc.push(points[i].min_price_nc);
             max_nc.push(points[i].max_price_nc);
         }
-        var trace1 = {
+        var tracesStandard = {
             x: x,
-            y: min,
-            line: {width: 0}, 
-            marker: {color: "444"}, 
-            mode: "lines", 
-            name: "Minimum price", 
+            mode: "lines",
             type: "scatter"
+        }
+        var markerStandard = {
+            ...tracesStandard,
+            marker: {color: "444"}
+        }
+        var markerLineStandard = {
+            shape: "spline",
+            dash: "dash"
+        }
+        var markerCStandard = {
+            ...markerStandard,
+            legendgroup: "Corrected",
+            line: {
+                ...markerLineStandard,
+                color: "rgba(0,100,80,0.2)"
+            }
+        }
+        var markerNcStandard = {
+            ...markerStandard,
+            legendgroup: "Non-corrected",
+            line: {
+                ...markerLineStandard,
+                color: "rgba(0,176,246,0.2)"
+            }
+        }
+
+        var trace1 = {
+            ...markerCStandard,
+            y: max,
+            name: "Maximum price"
         };
         var trace2 = {
-            x: x, 
+            ...tracesStandard,
+            legendgroup: "Corrected",
             y: avr,
-            fill: "tonexty", 
-            fillcolor: "rgba(0,100,80,0.2)", 
-            line: {color: "rgb(0,100,80)"}, 
-            mode: "lines", 
-            name: "Median", 
-            type: "scatter"
+            line: {color: "rgb(0,100,80)"},
+            name: "Corrected Median"
           };          
           var trace3 = {
-            x: x,
-            y: max,
-            fill: "tonexty", 
-            fillcolor: "rgba(0,100,80,0.2)", 
-            line: {width: 0}, 
-            marker: {color: "444"}, 
-            mode: "lines", 
-            name: "Maximum price", 
-            type: "scatter"
+            ...markerCStandard,
+            y: min,
+            name: "Minimum price"
           };
           var trace4 = {
-            x: x,
-            y: min_nc,
-            line: {width: 0}, 
-            marker: {color: "444"}, 
-            mode: "lines", 
-            name: "Minimum price", 
-            type: "scatter"
+            ...markerNcStandard,
+            y: max_nc,
+            name: "Maximum price"
         };
         var trace5 = {
-            x: x, 
+            ...tracesStandard,
+            legendgroup: "Non-corrected",
             y: avr_nc,
-            fill: "tonexty", 
-            fillcolor: "rgba(0,100,80,0.2)", 
-            line: {color: "rgb(0,176,246)"}, 
-            mode: "lines", 
-            name: "Median", 
-            type: "scatter"
+            line: {color: "rgb(0,176,246)"},
+            name: "Non-corrected Median"
           };          
           var trace6 = {
-            x: x,
-            y: max_nc,
-            fill: "tonexty", 
-            fillcolor: "rgba(0,100,80,0.2)", 
-            line: {width: 0}, 
-            marker: {color: "444"}, 
-            mode: "lines", 
-            name: "Maximum price", 
-            type: "scatter"
+            ...markerNcStandard,
+            y: min_nc,
+            name: "Minimum price"
           };
           var layout = {
-            showlegend: false, 
+            showlegend: true, 
             title: "Tracker", 
             yaxis: {title: "Price"}
           };
@@ -122,15 +127,18 @@ var _aliTracker = (function(toast){
             dataType: 'json',
             encode: true
         }).done(function(data, textStatus, jqXHR){
-            if (!data.data.count > 0){
+            if (!data.data.count > 1){
                 retryButton.removeClass("d-none");
+                plotWrapper.addClass("d-none");
                 toast.info("Our tracker returned zero results. Try again tomorrow.", "Ooops...");
             } else {
                 retryButton.addClass("d-none");
+                plotWrapper.removeClass("d-none");
                 paintPlot(data);
             }            
         }).fail(function(jqXHR, textStatus, errorThrown){
             retryButton.removeClass("d-none");
+            plotWrapper.addClass("d-none");
             let msg = "";
             if (typeof jqXHR.responseText == "string" && jqXHR.responseText != "" && jqXHR.responseText.length < 70){
                 msg = jqXHR.responseText;
