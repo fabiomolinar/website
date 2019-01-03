@@ -216,3 +216,29 @@ python manage.py shell
 >>> from django_celery_beat.models import PeriodicTask
 >>> PeriodicTask.objects.update(last_run_at=None)
 ```
+
+## Digital Ocean
+
+### SSH
+
+(Reference)[https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804]
+
+### Initial Server Setup
+
+(Reference)[https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04]
+
+Always good to create a new user other than root to do daily tasks on the server. E.g.: fabio.
+
+### Nginx, Gunicorn and Django Settings
+
+(Reference)[https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04]
+
+### SSL Certification
+
+(Reference)[https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04]
+(Nginx configuration and certbot workflow)[https://miki725.com/docker/crypto/2017/01/29/docker+nginx+letsencrypt.html]
+Amazing tuto/explanation: (Nginx configuration and certbot workflow 2)[https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx]
+
+### DNS
+
+(Reference)[https://www.digitalocean.com/docs/networking/dns/]

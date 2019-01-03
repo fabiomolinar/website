@@ -139,7 +139,7 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = [
     ('en', _('English')),
-    ('pt', _('Português'))
+    ('pt', _('Portuguese'))
 ]
 
 TIME_ZONE = 'Europe/Warsaw'
@@ -159,6 +159,9 @@ STATIC_URL = '/static/'
 SITE_ID = 1
 
 # ----- My settings -----
+
+ADMINS = [('Fabio Molinar', 'fabiomolinar+website@gmail.com')]
+MANAGERS = [('Fabio Molinar', 'fabiomolinar+website@gmail.com')]
 
 # Zinnia
 ZINNIA_MARKUP_LANGUAGE = 'markdown'
@@ -182,3 +185,7 @@ CELERY_BROKER_URL = 'pyamqp://guest:guest@rabbitmq:5672/'
 CELERY_TIMEZONE = 'Europe/Warsaw'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_BEAT_MAX_LOOP_INTERVAL = 300
+
+# Security
+SECURE_BROWSER_XSS_FILTER = True
+X_FRAME_OPTIONS = 'DENY'

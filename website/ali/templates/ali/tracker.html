@@ -68,7 +68,7 @@
                 <form class="d-none" action="{% url 'ali:get_tracker' %}" method="POST" id="form_request" class="d-none" novalidate>
                     <input type="text" name="search_text" value="{{ search_text }}" disabled>
                     {% csrf_token %}
-                </form>       
+                </form>
             </div>
         </div>        
     </div>
@@ -78,7 +78,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Plotly -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-locale-pt-br-latest.js"></script>
-
+    {% if LANGUAGE_CODE == 'pt' %}
+        <script src="https://cdn.plot.ly/plotly-locale-pt-br-latest.js"></script>
+        <script>Plotly.setPlotConfig({locale: 'pt-BR'})</script>
+    {% endif %}
     <script src="{% static 'ali/js/tracker.js' %}"></script>
 {% endblock scripts %}
