@@ -18,9 +18,26 @@ def tracker(request):
     search_text = Tracker.objects.get_current_search()
     return render(request, 'ali/tracker.html', {'search_text': search_text})
 
+standard_fields_to_client = [
+    'average', 'average_nc', 'currency', 'date_created', 'max_price', 'max_price_nc',
+    'median', 'median_nc', 'min_price', 'min_price_nc', 'stddev', 'stddev_nc'
+]
+search_fields_to_client = standard_fields_to_client + ['results', 'number_points', 'number_points_nc']
+
 # API
 def get_tracker(request):
-    return JsonResponse({'test': 'test'})
+    text_to_search = request.POST.get('search_text', None)
+    data = {
+        'search_text': text_to_search,
+        'count': 0,
+        'data': []
+    }
+    query = Search.objects.filter(search_text=text_to_search)
+    count = query.count()
+    if count != 0:
+        data['data'] = list(query.order_by('-id').values(*standard_fields_to_client))
+        data['count'] = count
+    return JsonResponse({'data': data})
 
 def run_search(request):
     text_to_search = request.POST.get('text', None)
@@ -30,7 +47,7 @@ def run_search(request):
     # Check if not old entry exists
     exist_current, current = Search.objects.exists_current(search_text=text_to_search, days_to_check=settings.ALI_SEARCH_CACHE)
     if exist_current:
-        return JsonResponse(model_to_dict(current))
+        return JsonResponse(model_to_dict(current, fields=search_fields_to_client))
     # Make HTTP request to scrapy server
     request_sent = Search.send_request_to_server(search_text=text_to_search, host=settings.SCRAPYD_HOST)
     if not request_sent:
@@ -45,5 +62,5 @@ def run_search(request):
     query = Search.objects.filter(search_text=text_to_search).order_by('-date_created')
     if query.count() != 0:
         last_entry = query[0]
-        return JsonResponse(model_to_dict(last_entry))
+        return JsonResponse(model_to_dict(last_entry, fields=search_fields_to_client))
     return HttpResponseServerError(_("No results found"))

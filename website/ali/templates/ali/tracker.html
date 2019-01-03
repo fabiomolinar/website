@@ -14,6 +14,8 @@
 {% block head %}
     <!-- FontAwesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 {% endblock head %}
 
 {% block base-content %}
@@ -55,16 +57,22 @@
         <hr>
         <div class="row flex-xl">
             <div class="col-12 bd-content">
-                <h3>Searched text: <strong id="searchText">{{ search_text }}</strong></h3>
-                <p id="results_spinner" class="text-center d-none"><span class="fas fa-spinner fa-5x fa-spin" aria-hidden="true"></span></p>
-                <form action="{% url 'ali:get_tracker' %}" method="POST" id="form_request" class="d-none" novalidate>
+                <h3>Searched text: <strong>{{ search_text }}</strong></h3>
+                <p id="results_spinner" class="text-center"><span class="fas fa-spinner fa-5x fa-spin" aria-hidden="true"></span></p>
+                <button id="retry_button" type="button" class="btn btn-primary btn-lg btn-block d-none">Retry</button>
+                <form class="d-none" action="{% url 'ali:get_tracker' %}" method="POST" id="form_request" class="d-none" novalidate>
                     <input type="text" name="search_text" value="{{ search_text }}" disabled>
                     {% csrf_token %}
                 </form>
+                <div id="plot"></div>
             </div>
         </div>        
     </div>
 {% endblock base-content %}
 {% block scripts %}
+    <!-- Toastr -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <!-- Plotlu -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script src="{% static 'ali/js/tracker.js' %}"></script>
 {% endblock scripts %}
