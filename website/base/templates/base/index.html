@@ -19,7 +19,7 @@
         <p>{% blocktrans %}Web developer, Industrial Automation Engineer, Husband & Father.{% endblocktrans %}</p>        
     </div>
     <div class="container">
-        <div class="row">
+        <div class="row m-3">
             <div class="col">
                 <p>{% blocktrans %}Welcome to my personal website.{% endblocktrans %}</p>
                 {% url 'projects' as project_url %}
@@ -28,12 +28,35 @@
                 <p>{% blocktrans %}This is where I come to when I am not at work, when my wife is busy and my children are sleeping. :){% endblocktrans %}</p>
             </div>
         </div>
-        <div class="row">
+        <div class="row m-3">
             <div class="col">
                 <h3>{% blocktrans %}Website architecture{% endblocktrans %}</h3>
                 <p>{% blocktrans %}Below an illustrative image of the current state of this website's architecture{% endblocktrans %}.</p>
                 <p>{% blocktrans %}The green dotted lines represent different Docker containers{% endblocktrans %}.</p>
                 <div class="text-center"><img class="img-fluid" src="{% static 'base/images/website architecture.svg' %}" alt="{% blocktrans %}Website architecture{% endblocktrans %}"></div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <h3>{% blocktrans %}Translation: a work [always] in progress...{% endblocktrans %}</h3>
+                <p>{% blocktrans %}I am Brazilian, I have lived and studied in Germany, I currently live in Poland and I am also an Italian citizen.{% endblocktrans %}</p>
+                <p>{% blocktrans %}I had a lot of contact with the German language (used to speak it) and I am aiming to learn Italian. But on my daily basis I use English, Portuguese and Polish to communicate at work and with family/friends.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Still, translating the entire content of this site takes time and is something I work on sporadically.{% endblocktrans %}</p>
+                <div>
+                    <p>{% blocktrans %}Therefore, expect to:{% endblocktrans %}</p>
+                    <ul>
+                        <li>{% blocktrans %}always find the content of this site written in English (the language I have been using the most){% endblocktrans %}</li>
+                        <li>{% blocktrans %}find some content in Portuguese (since I have been testing Django's internationalization package){% endblocktrans %}</li>
+                        <li>{% blocktrans %}full support for Portuguese and other languages sometime in the future.{% endblocktrans %}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <h3>{% blocktrans %}UX and Web Design{% endblocktrans %}</h3>
+                <p>{% blocktrans %}Not my strong point and not something I am personally curious about. Therefore, when it comes to design, don't expect to find anything more complex than Bootstrap or packaged ready components here.{% endblocktrans %}</p>
+                <p>{% blocktrans %}Still, I will try to do my best not to make this site looks like a <a href="http://www.columbia.edu/~fdc/sample.html">plain html site</a>. :){% endblocktrans%}</p>
             </div>
         </div>
     </div>

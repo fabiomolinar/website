@@ -27,7 +27,7 @@ SECRET_KEY = '!luz5ul72p8z%e+9ffm8cv!zhb1+qkznbx5pqu@a)j(by9)_dt'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['localhost', 'fabiomolinar.com', 'www.fabiomolinar.com', '.fabiomolinar.com']
 
 
 # Application definition
