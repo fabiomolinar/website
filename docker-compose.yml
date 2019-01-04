@@ -85,6 +85,8 @@ services:
       dockerfile: Dockerfile
     image: collector
     container_name: collector
+    env_file:
+      - ./env_files/.env
     networks:
       - website_db_network
       - collector_network
