@@ -5,6 +5,8 @@ services:
     build: .
     image: website
     container_name: website
+    env_file:
+      - ./env_files/.env
     volumes:
       - .:/opt/services/website/src
       - static_volume:/opt/services/website/static
@@ -20,9 +22,10 @@ services:
     command: ["gunicorn", "--bind", ":8000", "website.wsgi:application"]
 
   celery_beat:
-    build: .
-    image: celery_beat
+    image: website
     container_name: celery_beat
+    env_file:
+      - ./env_files/.env
     volumes:
       - .:/opt/services/website/src
     networks: 
@@ -35,9 +38,10 @@ services:
     command: ["celery", "-A", "website", "beat"]
 
   celery_worker:
-    build: .
-    image: celery_worker
+    image: website
     container_name: celery_worker
+    env_file:
+      - ./env_files/.env
     volumes:
       - .:/opt/services/website/src
     networks: 
@@ -69,7 +73,7 @@ services:
     image: website_db
     container_name: website_db
     env_file:
-      - ./postgresql/env
+      - ./env_files/.env
     networks:
       - website_db_network
     volumes:
@@ -92,6 +96,8 @@ services:
       context: ./rabbitmq
       dockerfile: Dockerfile
     container_name: rabbitmq
+    env_file:
+      - ./env_files/.env
     hostname: "rabbitmq"
     image: rabbitmq
     networks: 

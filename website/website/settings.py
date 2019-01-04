@@ -22,10 +22,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '!luz5ul72p8z%e+9ffm8cv!zhb1+qkznbx5pqu@a)j(by9)_dt'
+SECRET_KEY = os.environ.get('WEBSITE_DJANGO_SECRET_KEY', '!luz5ul72p8z%e+9ffm8cv!zhb1+qkznbx5pqu@a)j(by9)_dt')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('WEBSITE_DJANGO_DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['localhost', 'fabiomolinar.com', 'www.fabiomolinar.com', '.fabiomolinar.com']
 
@@ -95,16 +95,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'website',
         'USER': 'website',
-        'PASSWORD': 'website',
-        'HOST': 'website_db',
+        'PASSWORD': os.environ.get('WEBSITE_POSTGRES_WEBSITE_PASSWORD', 'website'),
+        'HOST': os.environ.get('WEBSITE_DJANGO_DB_HOST', 'website_db'),
         'PORT': '5432',
     },
     'ali': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'ali',
         'USER': 'ali',
-        'PASSWORD': 'ali',
-        'HOST': 'website_db',
+        'PASSWORD': os.environ.get('WEBSITE_POSTGRES_ALI_PASSWORD', 'ali'),
+        'HOST': os.environ.get('WEBSITE_DJANGO_DB_HOST', 'website_db'),
         'PORT': '5432',
     }
 }
@@ -171,7 +171,7 @@ STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
 MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
 
 # Scrapyd host
-SCRAPYD_HOST = 'collector'
+SCRAPYD_HOST = os.environ.get('WEBSITE_DJANGO_SCRAPYD_HOST', 'collector')
 # How many days we will cache the results from a query
 ALI_SEARCH_CACHE = 3
 # How many seconds to wait while listening for an event from the DB (in seconds)
@@ -181,7 +181,7 @@ ALI_DEFAULT_TRACKER = 'mp3'
 
 # Celery
 CELERY_RESULT_BACKEND = 'django-db'
-CELERY_BROKER_URL = 'pyamqp://guest:guest@rabbitmq:5672/'
+CELERY_BROKER_URL = os.environ.get('WEBSITE_DJANGO_CELERY_BROKER_URL', 'pyamqp://guest:guest@rabbitmq:5672/')
 CELERY_TIMEZONE = 'Europe/Warsaw'
 CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers:DatabaseScheduler'
 CELERY_BEAT_MAX_LOOP_INTERVAL = 300
@@ -189,3 +189,13 @@ CELERY_BEAT_MAX_LOOP_INTERVAL = 300
 # Security
 SECURE_BROWSER_XSS_FILTER = True
 X_FRAME_OPTIONS = 'DENY'
+
+# Email
+
+EMAIL_BACKEND = os.environ.get('WEBSITE_DJANGO_EMAIL_BACKEND', 'django.core.mail.backends.console.EmailBackend')
+EMAIL_HOST = os.environ.get('WEBSITE_DJANGO_EMAIL_HOST', 'smtp.zoho.com')
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('WEBSITE_DJANGO_EMAIL_HOST_USER', 'default@domain.com')
+EMAIL_HOST_PASSWORD = os.environ.get('WEBSITE_DJANGO_EMAIL_HOST_PASSWORD', 'password')
+EMAIL_USE_TLS = os.environ.get('WEBSITE_DJANGO_EMAIL_USE_TLS', 'True') == 'True'
+EMAIL_USE_SSL = os.environ.get('WEBSITE_DJANGO_EMAIL_USE_SSL', 'True') == 'True'
