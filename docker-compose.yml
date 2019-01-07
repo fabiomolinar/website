@@ -68,6 +68,18 @@ services:
     networks:
       - nginx_network
 
+  certbot:
+    image: certbot/certbot:0.30.0
+    container_name: certbot
+    volumes:
+      - certs:/etc/letsencrypt
+      - certs-data:/var/www/certbot
+    depends_on:
+      - nginx
+    networks:
+      - nginx_network
+    command: ['certificates']
+
   website_db:
     build:
       context: ./postgresql
