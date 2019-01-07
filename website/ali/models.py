@@ -118,28 +118,6 @@ class Search(models.Model):
     date_created = models.DateTimeField(verbose_name="date the data was collected")
 
     @classmethod
-    def request_is_valid(cls, request, payload):
-        """Checks if the request for data is valid
-
-        Args:
-            request: the HTTP request
-            payload: the data contained in the request
-
-        Returns:
-            (True, "") if the request is valid, (False, message with the reason) otherwise
-        """
-        # Check if it is an Ajax request and a POST request
-        if not request.is_ajax():
-            return False, _("Only Ajax calls are permitted")
-        if not request.method == 'POST':
-            return False, _("Only POST requests are permistted")
-        if not payload:
-            return False, _("No text to search provided")
-        if not isinstance(payload, str):
-            return False, _("Invalid search object")
-        return True, ""
-
-    @classmethod
     def send_request_to_server(cls, search_text, host):
         """Send HTTP POST request to scrapy server
 
@@ -186,4 +164,29 @@ class Tracker(models.Model):
     objects = TrackerManager()
 
     search_text = models.TextField(verbose_name="text used on the search query")
+    date_created = models.DateTimeField(verbose_name="date created", auto_now_add=True)
+
+class ThrottlerManager(models.Manager):
+    """Throttler Manager"""
+
+    def accesses_in_last_hour(self, ip, session_id):
+        x = timezone.timedelta(hours=1)
+        return self._accesses_in_last_x(ip, session_id, x)
+
+    def accesses_in_last_24h(self, ip, session_id):
+        x = timezone.timedelta(hours=24)
+        return self._accesses_in_last_x(ip, session_id, x)
+
+    def _accesses_in_last_x(self, ip, session_id, x):
+        time_ref = timezone.now() - x
+        query_object = models.Q(ip=ip) | models.Q(session_id=session_id)
+        return self.filter(query_object, date_created__gte=time_ref).count()
+
+class Throttler(models.Model):
+    """Keeps track of the frequency a user is accessing the API"""
+
+    objects = ThrottlerManager()
+
+    ip = models.TextField(verbose_name="ip address")
+    session_id = models.TextField(verbose_name="session id")
     date_created = models.DateTimeField(verbose_name="date created", auto_now_add=True)

@@ -11,4 +11,8 @@ python manage.py migrate ali --database=ali
 # Generate translation files
 python manage.py compilemessages
 
+# On website ---------------------
+# Create periodic tasks
+# Create tracker entry
+
 # create cron job to run certbot every 15 days to update certificates
