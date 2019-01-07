@@ -56,11 +56,13 @@ services:
     image: nginx:1.15
     container_name: nginx
     ports:
-      - "8000:80"
+      - "80:80"
     volumes:
       - ./nginx/conf.d:/etc/nginx/conf.d
       - static_volume:/opt/services/website/static
       - media_volume:/opt/services/website/media
+      - certs:/etc/letsencrypt
+      - certs-data:/data/letsencrypt
     depends_on:
       - website
     networks:
@@ -122,3 +124,5 @@ volumes:
   static_volume:
   media_volume:
   rabbitmq_volume:
+  certs:
+  certs-data:

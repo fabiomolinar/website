@@ -6,10 +6,10 @@
 # Copy/create .env file on website/env_files folder.
 
 # On website container -----------
-# If django superuser don't exist, create one.
 # Run migrations from within website
 python manage.py migrate
 python manage.py migrate ali --database=ali
+# If django superuser don't exist, create one.
 # Generate translation files
 python manage.py compilemessages
 

@@ -246,6 +246,11 @@ Always good to create a new user other than root to do daily tasks on the server
 (Nginx configuration and certbot workflow)[https://miki725.com/docker/crypto/2017/01/29/docker+nginx+letsencrypt.html]
 Amazing tuto/explanation: (Nginx configuration and certbot workflow 2)[https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx]
 
+To get the certificate for the first time, we need to:
+
+- Update nginx config to set the ACME challenge path
+- Run a certbot container to run the challenge
+
 ### DNS
 
 (Reference)[https://www.digitalocean.com/docs/networking/dns/]
