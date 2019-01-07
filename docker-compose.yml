@@ -69,7 +69,7 @@ services:
       - nginx_network
 
   certbot:
-    image: certbot/certbot:0.30.0
+    image: certbot/certbot:v0.30.0
     container_name: certbot
     volumes:
       - certs:/etc/letsencrypt
