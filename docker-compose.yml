@@ -62,7 +62,7 @@ services:
       - static_volume:/opt/services/website/static
       - media_volume:/opt/services/website/media
       - certs:/etc/letsencrypt
-      - certs-data:/var/www/certbot
+      - certs_data:/var/www/certbot
     depends_on:
       - website
     networks:
@@ -125,4 +125,4 @@ volumes:
   media_volume:
   rabbitmq_volume:
   certs:
-  certs-data:
+  certs_data:
