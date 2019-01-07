@@ -62,7 +62,7 @@ services:
       - static_volume:/opt/services/website/static
       - media_volume:/opt/services/website/media
       - certs:/etc/letsencrypt
-      - certs-data:/var/lib/letsencrypt
+      - certs-data:/var/www/certbot
     depends_on:
       - website
     networks:
