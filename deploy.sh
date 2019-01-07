@@ -1,6 +1,8 @@
 # deploying to production
 
 # On droplet ---------------------
+# prune images and containers
+# build new images
 # Copy/create .env file on website/env_files folder.
 
 # On website container -----------
