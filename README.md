@@ -269,3 +269,9 @@ To renew the certificates:
 ### DNS
 
 (Reference)[https://www.digitalocean.com/docs/networking/dns/]
+
+### Deploying
+
+To restart a container while system is up and running:
+
+``
