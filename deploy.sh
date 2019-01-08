@@ -12,6 +12,7 @@ python manage.py migrate ali --database=ali
 # If django superuser don't exist, create one.
 # Generate translation files
 python manage.py compilemessages
+# Collect static files
 
 # On website ---------------------
 # Create periodic tasks
