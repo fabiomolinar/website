@@ -262,6 +262,10 @@ To renew the certificates:
 - Run a certbot container with the following command:
   - `sudo docker run --rm -it --name certbot -v "website_certs:/etc/letsencrypt" -v "website_certs_data:/var/www/certbot" certbot/certbot:v0.30.0 renew --webroot --webroot-path /var/www/certbot`
 
+- To run on development environment we need to create the certificates ourselves.
+
+
+
 ### DNS
 
 (Reference)[https://www.digitalocean.com/docs/networking/dns/]
