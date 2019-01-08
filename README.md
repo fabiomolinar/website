@@ -252,6 +252,11 @@ To get the certificate for the first time, we need to:
 - Run a certbot container to run the challenge
   - E.g.: `sudo docker run -it --rm --name certbot -v "website_certs:/etc/letsencrypt" -v "website_certs_data:/var/www/certbot" certbot/certbot:v0.30.0 certonly --webroot --webroot-path /var/www/certbot -d fabiomolinar.com -d www.fabiomolinar.com`
 
+To verify the certificates:
+
+- Run a certbot container to run the following command:
+  - `sudo docker run -it --rm --name certbot -v "website_certs:/etc/letsencrypt" -v "website_certs_data:/var/www/certbot" certbot/certbot:v0.30.0 certificates`
+
 ### DNS
 
 (Reference)[https://www.digitalocean.com/docs/networking/dns/]
