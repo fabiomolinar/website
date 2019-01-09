@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+{% block title %}
+    {% trans 'Bad request' %}
+{% endblock title %}
+{% block description %}
+    <meta name="description" content="{% trans 'Bad request' %}" />
+{% endblock description%}        
+
+{% block base-content %}
+<div class="jumbotron">
+    <h1>{% trans "Bad request" %}</h1>
+    <p>{% trans "Sorry, but the request was malformed." %}</p>
+</div>
+{% endblock base-content %}

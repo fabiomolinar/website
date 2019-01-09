@@ -224,27 +224,34 @@ python manage.py shell
 >>> PeriodicTask.objects.update(last_run_at=None)
 ```
 
+### Debugging RabbitMQ
+
+- `rabbitmqctl status`
+- `rabbitmqctl list_queues`
+- `rabbitmqctl list_connections`
+- `rabbitmqctl list_channels`
+
 ## Digital Ocean
 
 ### SSH
 
-(Reference)[https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804]
+[Reference](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804)
 
 ### Initial Server Setup
 
-(Reference)[https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04]
+[Reference](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
 
 Always good to create a new user other than root to do daily tasks on the server. E.g.: fabio.
 
 ### Nginx, Gunicorn and Django Settings
 
-(Reference)[https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04]
+[Reference](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-18-04)
 
 ### SSL Certification
 
-(Reference)[https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04]
-(Nginx configuration and certbot workflow)[https://miki725.com/docker/crypto/2017/01/29/docker+nginx+letsencrypt.html]
-Amazing tuto/explanation: (Nginx configuration and certbot workflow 2)[https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx]
+- [Reference 1](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
+- [Nginx configuration and certbot workflow](https://miki725.com/docker/crypto/2017/01/29/docker+nginx+letsencrypt.html)
+- Amazing tuto/explanation: [Nginx configuration and certbot workflow 2](https://www.humankode.com/ssl/how-to-set-up-free-ssl-certificates-from-lets-encrypt-using-docker-and-nginx)
 
 To get the certificate for the first time, we need to:
 
@@ -263,12 +270,12 @@ To renew the certificates:
   - `sudo docker run --rm -it --name certbot -v "website_certs:/etc/letsencrypt" -v "website_certs_data:/var/www/certbot" certbot/certbot:v0.30.0 renew --webroot --webroot-path /var/www/certbot`
 
 - To run on development environment we need to create the certificates ourselves.
-
-
+  - Check [this site](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/) for reference on how to create it.
+  - The certificate and private key may have the "crt" and "key" file extensions. But if they are not binary and start with **---BEGIN**, we can just rename them to "pem" file extensions and it should work.
 
 ### DNS
 
-(Reference)[https://www.digitalocean.com/docs/networking/dns/]
+[Reference](https://www.digitalocean.com/docs/networking/dns/)
 
 ### Deploying
 

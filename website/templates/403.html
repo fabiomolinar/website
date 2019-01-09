@@ -1,0 +1,15 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+{% block title %}
+    {% trans 'Permission denied' %}
+{% endblock title %}
+{% block description %}
+    <meta name="description" content="{% trans 'Permission denied' %}" />
+{% endblock description%}        
+
+{% block base-content %}
+<div class="jumbotron">
+    <h1>{% trans "Permission denied" %}</h1>
+    <p>{% trans "Sorry, but you don't have the permission to do this action." %}</p>
+</div>
+{% endblock base-content %}
