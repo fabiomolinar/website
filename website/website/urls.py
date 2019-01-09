@@ -26,6 +26,11 @@ from zinnia.sitemaps import TagSitemap
 
 from .sitemaps import StaticViewSitemap
 
+AuthorSitemap.protocol = 'https'
+CategorySitemap.protocol = 'https'
+EntrySitemap.protocol = 'https'
+TagSitemap.protocol = 'https'
+
 sitemaps = {
     'static': StaticViewSitemap,
     'tags': TagSitemap,
@@ -37,7 +42,7 @@ sitemaps = {
 # URLs witouht Internationalization
 urlpatterns = [
     path('sitemap.xml', views.index, {'sitemaps': sitemaps}),
-    path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps},name='django.contrib.sitemaps.views.sitemap'),
+    path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('i18n/', include('django.conf.urls.i18n')),
 ]
 

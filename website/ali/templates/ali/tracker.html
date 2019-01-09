@@ -84,3 +84,9 @@
     {% endif %}
     <script src="{% static 'ali/js/tracker.js' %}"></script>
 {% endblock scripts %}
+{% block onload %}    
+    _aliTracker.spinner.removeClass("d-none");
+    _aliTracker.retryButton.addClass("d-none");
+    _aliTracker.plotWrapper.addClass("d-none");
+    _aliTracker.trackerForm.submit();
+{% endblock onload %}

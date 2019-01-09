@@ -7,12 +7,6 @@ var _aliTracker = (function(toast){
     let trackerForm = $("#form_request");
     let retryButton = $('#retry_button');
     let plotWrapper = $('#plotWrapper');
-    window.onload = function(){
-        spinner.removeClass("d-none");
-        retryButton.addClass("d-none");
-        plotWrapper.addClass("d-none");
-        trackerForm.submit();
-    }
 
     var paintPlot = function(data){
         var points = data.data.data
@@ -154,4 +148,11 @@ var _aliTracker = (function(toast){
     retryButton.click(function(e){
         trackerForm.submit();
     });
+
+    return {
+        spinner: spinner,
+        trackerForm: trackerForm,
+        retryButton: retryButton,
+        plotWrapper: plotWrapper
+    }
 })(toastr);

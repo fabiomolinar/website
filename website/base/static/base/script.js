@@ -1,7 +1,4 @@
 var _website = (function(){
-    window.onload = function(){
-        paintHeader(getSubDirectory(window.location.pathname), "my-top-nav-list")
-    }
     /** List of languages I expect to support */
     let langs = ['en','pt','en_US','pt_BR','pl','it'];
     /**
@@ -51,5 +48,9 @@ var _website = (function(){
             let parent = item.parentElement;
             parent.className = parent.className + " active";
         }        
+    }
+    return {
+        paintHeader: paintHeader,
+        getSubDirectory: getSubDirectory
     }
 })();

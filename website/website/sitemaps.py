@@ -3,6 +3,7 @@ from django.urls import reverse
 
 class StaticViewSitemap(sitemaps.Sitemap):
     i18n = True
+    protocol = 'https'
 
     def items(self):
         return ['index', 'projects', 'zinnia:entry_archive_index', 'about', 'contact']

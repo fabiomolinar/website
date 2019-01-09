@@ -6,6 +6,18 @@
 <!DOCTYPE HTML>
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-51812651-6"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            if (location.hostname === "localhost" || location.hostname === "127.0.0.1"){
+                window['ga-disable-UA-51812651-6'] = true;
+            }
+            gtag('config', 'UA-51812651-6', { 'transport_type': 'beacon'});
+        </script>
+
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -109,5 +121,21 @@
         <!-- My Scripts -->
         <script src="{% static 'base/script.js' %}"></script>
         {% block scripts %}{% endblock scripts %}
+        <script>
+                window.onload = function(){
+                    if (window.performance){
+                        var timeSincePageLoad = Math.round(performance.now());
+                        gtag('event', 'timing_complete', {
+                            'name': 'load',
+                            'value': timeSincePageLoad,
+                            'event_category': 'JS Dependencies'
+                        });
+                    }
+                    _website.paintHeader(_website.getSubDirectory(window.location.pathname), "my-top-nav-list");
+                    /* eslint-disable */
+                    {% block onload %}{% endblock onload %}
+                    /* eslint-enable */
+                }
+            </script>
     </body>
 </html>

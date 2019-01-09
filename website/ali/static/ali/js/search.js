@@ -1,8 +1,4 @@
 var _aliSearch = (function(toast){
-    // Initialization
-    window.onload = function(){
-        $('[data-toggle="tooltip"]').tooltip();
-    }
     toast.options = {
         "positionClass": "toast-bottom-center",
         "showDuration": "600"
@@ -83,8 +79,13 @@ var _aliSearch = (function(toast){
         let formData = {
             'text': $('input[name=text]').val(),
             'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
-        }                
+        }
+        gtag('event', 'search', {
+            'event_category': 'ali',
+            'event_label': formData.text
+        });
 
+        var timeBeginning = new Date();
         $.ajax({
             type: 'POST',
             url: searchForm.attr("action"),
@@ -109,6 +110,12 @@ var _aliSearch = (function(toast){
             toast.warning(msg + " Try again in a few minutes. You may also try to check your internet connection.","Something went wrong...");
         }).always(function(data){
             spinner.addClass("d-none");
+            var timeEnd = new Date();
+            gtag('event', 'timing_complete', {
+                'name' : 'search',
+                'value' : timeEnd.getTime() - timeBeginning.getTime(),
+                'event_category' : 'ali'
+            });
         });
     });
 })(toastr);

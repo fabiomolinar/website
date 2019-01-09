@@ -165,3 +165,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{% static 'ali/js/search.js' %}"></script>
 {% endblock scripts %}
+{% block onload %}
+    $('[data-toggle="tooltip"]').tooltip();
+{% endblock onload %}
