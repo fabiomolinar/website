@@ -1,7 +1,5 @@
 # To do's
 
-- Create self signed certificate on my dev env
-- Fix not found page not to show blog template
 - Add Google Analytics
 - Update sitemaps to show 'https'
 - Update server to redirect any www to the non-www
