@@ -1,6 +1,5 @@
 # To do's
 
-- Update server to redirect any www to the non-www
 - Enable gzip compression
 - Leverage browser caching (especially for static content)
 - Minify static content
