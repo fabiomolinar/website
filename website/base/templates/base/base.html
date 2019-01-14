@@ -132,9 +132,9 @@
                         });
                     }
                     _website.paintHeader(_website.getSubDirectory(window.location.pathname), "my-top-nav-list");
-                    /* eslint-disable */
-                    {% block onload %}{% endblock onload %}
-                    /* eslint-enable */
+                    
+                    {% block onload %}{% endblock onload %} // eslint-disable-line
+                    
                 }
             </script>
     </body>

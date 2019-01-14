@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('WEBSITE_DJANGO_SECRET_KEY', '!luz5ul72p8z%e+9ffm8cv
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('WEBSITE_DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['localhost', 'fabiomolinar.com', 'www.fabiomolinar.com', '.fabiomolinar.com']
+ALLOWED_HOSTS = ['fabiomolinar.com', 'www.fabiomolinar.com', '.fabiomolinar.com', 'localhost', 'www.localhost', '.localhost']
 
 
 # Application definition
