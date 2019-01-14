@@ -13,6 +13,10 @@
     <meta name="keywords" content="{% blocktrans %}AliExpress, Data, Statistics, Summary, Automatic{% endblocktrans %}" />    
 {% endblock keywords%}
 {% block head %}
+    <meta property="og:title" content="{% blocktrans %}Tracking data of products from AliExpress{% endblocktrans %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fabiomolinar.com{{ request.get_full_path }}" />
+    <meta property="og:image" content="https://fabiomolinar.com{% static 'base/images/icon.png' %}" />
     <!-- FontAwesome -->
     <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
     <!-- Toastr -->

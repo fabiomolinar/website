@@ -1,6 +1,5 @@
 # To do's
 
-- Leverage browser caching (especially for static content)
 - Add Open Graph properties
 - Connect social media accounts
 

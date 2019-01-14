@@ -4,6 +4,7 @@
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as lang_info %}
 {% load compress %}
+{% load static %}
 <!DOCTYPE HTML>
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -28,9 +29,13 @@
             <meta name="description" content="{% blocktrans %}Fabio's personal website. Despite being my hobby, it is also used as a testing environment for my side projects.{% endblocktrans %}" />
         {% endblock description%}        
         {% block keywords %}{% endblock keywords %}
-        {% block head %}{% endblock head %}
+        {% block head %}
+            <meta property="og:title" content="Fabio Molinar's WebSite" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://fabiomolinar.com{{ request.get_full_path }}" />
+            <meta property="og:image" content="https://fabiomolinar.com{% static 'base/images/icon.png' %}" />
+        {% endblock head %}
                 
-        {% load static %}
         <!-- Icons -->
         <link rel="shortcut icon" href="{% static 'base/images/icon.ico' %}">
         <link rel="apple-touch-icon-precomposed" href="{% static 'base/images/icon.png' %}">
