@@ -1,8 +1,7 @@
 # To do's
 
-- Enable gzip compression
-- Leverage browser caching (especially for static content)
 - Minify static content
+- Leverage browser caching (especially for static content)
 - Connect social media accounts
 
 ## Tools

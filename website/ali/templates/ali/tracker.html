@@ -73,7 +73,7 @@
         </div>        
     </div>
 {% endblock base-content %}
-{% block scripts %}
+{% block no-compress-scripts %}
     <!-- Toastr -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <!-- Plotly -->
@@ -82,6 +82,8 @@
         <script src="https://cdn.plot.ly/plotly-locale-pt-br-latest.js"></script>
         <script>Plotly.setPlotConfig({locale: 'pt-BR'})</script>
     {% endif %}
+{% endblock no-compress-scripts %}
+{% block scripts %}
     <script src="{% static 'ali/js/tracker.js' %}"></script>
 {% endblock scripts %}
 {% block onload %}    

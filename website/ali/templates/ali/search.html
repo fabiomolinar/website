@@ -160,9 +160,11 @@
         </div>
     </div>
 {% endblock base-content %}
+{% block no-compress-scripts %}
+   <!-- Toastr -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+{% endblock no-compress-scripts %}
 {% block scripts %}
-    <!-- Toastr -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="{% static 'ali/js/search.js' %}"></script>
 {% endblock scripts %}
 {% block onload %}

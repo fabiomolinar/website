@@ -12,6 +12,7 @@ requests = "==2.21.0"
 celery = "==4.2.1"
 "django-celery-results" = "==1.0.4"
 "django-celery-beat" = "==1.4.0"
+"django-compressor" = "==2.2"
 
 [requires]
 python_version = "3.6"

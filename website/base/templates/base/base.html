@@ -3,6 +3,7 @@
 {% get_current_language as LANGUAGE_CODE %}
 {% get_available_languages as LANGUAGES %}
 {% get_language_info_list for LANGUAGES as lang_info %}
+{% load compress %}
 <!DOCTYPE HTML>
 <html lang="{{ LANGUAGE_CODE }}">
     <head>
@@ -36,7 +37,9 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <!-- CSS -->
+        {% compress css inline %}
         <link rel="stylesheet" type="text/css" href="{% static 'base/style.css' %}" />
+        {% endcompress %}
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -119,23 +122,26 @@
         <!-- Bootstrap -->
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
         <!-- My Scripts -->
+        {% block no-compress-scripts %}{% endblock no-compress-scripts %}
+        {% compress js inline %}
         <script src="{% static 'base/script.js' %}"></script>
         {% block scripts %}{% endblock scripts %}
         <script>
-                window.onload = function(){
-                    if (window.performance){
-                        var timeSincePageLoad = Math.round(performance.now());
-                        gtag('event', 'timing_complete', {
-                            'name': 'load',
-                            'value': timeSincePageLoad,
-                            'event_category': 'JS Dependencies'
-                        });
-                    }
-                    _website.paintHeader(_website.getSubDirectory(window.location.pathname), "my-top-nav-list");
-                    
-                    {% block onload %}{% endblock onload %} // eslint-disable-line
-                    
+            window.onload = function(){
+                if (window.performance){
+                    var timeSincePageLoad = Math.round(performance.now());
+                    gtag('event', 'timing_complete', {
+                        'name': 'load',
+                        'value': timeSincePageLoad,
+                        'event_category': 'JS Dependencies'
+                    });
                 }
-            </script>
+                _website.paintHeader(_website.getSubDirectory(window.location.pathname), "my-top-nav-list");
+                
+                {% block onload %}{% endblock onload %} // eslint-disable-line
+                
+            }
+        </script>
+        {% endcompress %}
     </body>
 </html>

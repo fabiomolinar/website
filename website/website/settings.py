@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'mptt',
     'tagging',
     'zinnia',
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -157,7 +158,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder'
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 ]
 
 SITE_ID = 1
