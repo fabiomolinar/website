@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-    Contact
+    {% blocktrans %}Contact{% endblocktrans %}
 {% endblock title %}
 {% block description %}
     <meta name="description" content="{% blocktrans %}How to get in contact with me.{% endblocktrans %}" />
@@ -12,7 +12,9 @@
     <meta name="keywords" content="{% blocktrans %}Fabio Thomaz Molinar, Fabio Molinar, Contact{% endblocktrans %}" />    
 {% endblock keywords%}
 {% block head %}
-    <meta property="og:title" content="{% blocktrans %}How to get in contact with me.{% endblocktrans %}" />
+    <meta property="og:title" content="Fabio's WebSite - {% blocktrans %}Contact{% endblocktrans %}" />
+    <meta property="og:site_name" content="fabiomolinar.com" />
+    <meta property="og:description" content="{% blocktrans %}How to get in contact with me.{% endblocktrans %}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fabiomolinar.com{{ request.get_full_path }}" />
     <meta property="og:image" content="https://fabiomolinar.com{% static 'base/images/icon.png' %}" />

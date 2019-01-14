@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-    AliExpress Search
+    {% blocktrans %}AliExpress Search{% endblocktrans %}
 {% endblock title %}
 {% block description %}
     <meta name="description" content="{% blocktrans %}Summary data of a search request to AliExpress{% endblocktrans %}" />
@@ -12,7 +12,9 @@
     <meta name="keywords" content="{% blocktrans %}AliExpress, Data, Statistics, Summary, Automatic{% endblocktrans %}" />    
 {% endblock keywords%}
 {% block head %}
-    <meta property="og:title" content="{% blocktrans %}Summary data of a search request to AliExpress{% endblocktrans %}" />
+    <meta property="og:title" content="Fabio's WebSite - {% blocktrans %}AliExpress Search{% endblocktrans %}" />
+    <meta property="og:site_name" content="fabiomolinar.com" />
+    <meta property="og:description" content="{% blocktrans %}Summary data of a search request to AliExpress{% endblocktrans %}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fabiomolinar.com{{ request.get_full_path }}" />
     <meta property="og:image" content="https://fabiomolinar.com{% static 'base/images/icon.png' %}" />

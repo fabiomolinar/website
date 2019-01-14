@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block title %}
-    Projects
+    {% blocktrans %}Projects{% endblocktrans %}
 {% endblock title %}
 {% block description %}
     <meta name="description" content="{% blocktrans %}List of the projects I have worked/am working on.{% endblocktrans %}" />
@@ -13,7 +13,9 @@
     <meta name="keywords" content="{% blocktrans %}IoT, Industry 4.0, Gas Turbines, Utilities, Power, Power generation{% endblocktrans %}" />
 {% endblock keywords%}
 {% block head %}
-    <meta property="og:title" content="{% blocktrans %}List of the projects I have worked/am working on.{% endblocktrans %}" />
+    <meta property="og:title" content="Fabio's WebSite - {% blocktrans %}Projects{% endblocktrans %}" />
+    <meta property="og:site_name" content="fabiomolinar.com" />
+    <meta property="og:description" content="{% blocktrans %}List of the projects I have worked/am working on.{% endblocktrans %}" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://fabiomolinar.com{{ request.get_full_path }}" />
     <meta property="og:image" content="https://fabiomolinar.com{% static 'base/images/icon.png' %}" />
