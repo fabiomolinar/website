@@ -5,6 +5,7 @@ logs/
 **/*.prod
 **/celerybeat.pid
 prod.env
+article.md
 
 # Github defaults
 # Byte-compiled / optimized / DLL files
