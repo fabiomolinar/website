@@ -24,7 +24,7 @@ ARG CACHEBUST=1
 # collect static
 RUN cd website && python manage.py collectstatic --no-input
 # create translation
-RUN cd website/base && django-admin compilemessages
+RUN cd website && python manage.py compilemessages
 
 # expose the port 8000
 EXPOSE 8000
