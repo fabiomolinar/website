@@ -45,7 +45,7 @@ var _aliTracker = (function(toast){
             legendgroup: "Corrected",
             line: {
                 ...markerLineStandard,
-                color: "rgba(0,100,80,0.2)"
+                color: "rgba(0,100,80,0.5)"
             }
         }
         var markerNcStandard = {
@@ -53,7 +53,7 @@ var _aliTracker = (function(toast){
             legendgroup: "Non-corrected",
             line: {
                 ...markerLineStandard,
-                color: "rgba(0,176,246,0.2)"
+                color: "rgba(0,176,246,0.5)"
             }
         }
 
