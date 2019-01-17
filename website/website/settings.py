@@ -171,6 +171,7 @@ MANAGERS = [('Fabio Molinar', 'fabiomolinar+website@gmail.com')]
 
 # Zinnia
 ZINNIA_MARKUP_LANGUAGE = 'markdown'
+ZINNIA_PROTOCOL = 'https'
 
 # Serving static files
 STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
