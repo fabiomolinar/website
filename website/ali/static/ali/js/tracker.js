@@ -7,6 +7,29 @@ var _aliTracker = (function(toast){
     let trackerForm = $("#form_request");
     let retryButton = $('#retry_button');
     let plotWrapper = $('#plotWrapper');
+    let NcOnly = $('#nc_only');
+    let COnly = $('#c_only');
+    let NcAndC = $('#nc_and_c');
+
+    let showNc = true;
+    let showC = true;
+    let dataContainer = {};
+
+    NcOnly.click(function(e){
+        showNc = true;
+        showC = false;
+        paintPlot(dataContainer);
+    });
+    COnly.click(function(e){
+        showNc = false;
+        showC = true;
+        paintPlot(dataContainer);
+    });
+    NcAndC.click(function(e){
+        showNc = true;
+        showC = true;
+        paintPlot(dataContainer);        
+    });
 
     var paintPlot = function(data){
         var points = data.data.data
@@ -68,13 +91,13 @@ var _aliTracker = (function(toast){
             y: avr,
             line: {color: "rgb(0,100,80)"},
             name: "Corrected Median"
-          };          
-          var trace3 = {
+        };          
+        var trace3 = {
             ...markerCStandard,
             y: min,
             name: "Minimum price"
-          };
-          var trace4 = {
+        };
+        var trace4 = {
             ...markerNcStandard,
             y: max_nc,
             name: "Maximum price"
@@ -85,22 +108,28 @@ var _aliTracker = (function(toast){
             y: avr_nc,
             line: {color: "rgb(0,176,246)"},
             name: "Non-corrected Median"
-          };          
-          var trace6 = {
+        };          
+        var trace6 = {
             ...markerNcStandard,
             y: min_nc,
             name: "Minimum price"
-          };
-          var layout = {
+        };
+        var layout = {
             showlegend: true, 
             title: "Tracker", 
             yaxis: {title: "Price"}
-          };
-          var config = {
-              responsive: true
-          }
-          var traces = [trace1, trace2, trace3, trace4, trace5, trace6];
-          Plotly.plot('plot', traces, layout, config);
+        };
+        var config = {
+            responsive: true
+        }
+        var traces = [];
+        if (showC){
+            traces.push(trace1, trace2, trace3);
+        }
+        if (showNc){
+            traces.push(trace4, trace5, trace6);
+        }
+        Plotly.newPlot('plot', traces, layout, config);
     }
 
     trackerForm.submit(function(e){
@@ -128,6 +157,7 @@ var _aliTracker = (function(toast){
             } else {
                 retryButton.addClass("d-none");
                 plotWrapper.removeClass("d-none");
+                dataContainer = data;
                 paintPlot(data);
             }            
         }).fail(function(jqXHR, textStatus, errorThrown){

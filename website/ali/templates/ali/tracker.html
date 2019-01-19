@@ -69,6 +69,11 @@
                 <button id="retry_button" type="button" class="btn btn-primary btn-lg btn-block d-none">Retry</button>
                 <div id="plotWrapper" class="d-none">
                     <p>Values in <span style="color:rgb(0,100,80)">green</span> are related to the <span style="color:rgb(0,100,80)">corrected</span> calculations for outliers, whereas the ones in <span style="color:rgb(0,176,246)">blue</span> are <span style="color:rgb(0,176,246)">non-corrected</span>.</p>
+                    <div class="m-1">
+                        <button id="nc_only" type="button" class="btn btn-primary btn-sm">Non-corrected only</button>
+                        <button id="c_only" type="button" class="btn btn-primary btn-sm">Corrected only</button>
+                        <button id="nc_and_c" type="button" class="btn btn-primary btn-sm">Both</button>
+                    </div>
                     <div id="plot"></div>
                 </div>
                 <form class="d-none" action="{% url 'ali:get_tracker' %}" method="POST" id="form_request" class="d-none" novalidate>
