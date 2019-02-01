@@ -27,6 +27,47 @@
         <div class="row m-3">
             <div class="col">
                 <div class="card-deck">
+                    <div class="card border-primary">
+                        <h5 class="card-header">Featured</h5>
+                        <div class="card-body">
+                            <h3 class="card-title">{% blocktrans %}Web Scraping - AliExpress Tracker{% endblocktrans %}</h3>
+                            <div class="card-subtitle mb-2">
+                                <span class="badge badge-pill badge-primary">Python</span>
+                                <span class="badge badge-pill badge-primary">Scrapy</span>
+                                <span class="badge badge-pill badge-primary">Scrapyd</span>
+                                <span class="badge badge-pill badge-primary">Numpy</span>
+                            </div>
+                            <p>{% blocktrans %}A service that <strong>continuously</strong> collects statistical data about a certain product/category at AliExpress.{% endblocktrans %}</p>
+                        </div>
+                        <div class="card-footer text-right">
+                            <a href="/blog/trackback/4/" class="btn btn-secondary">{% trans "View Details" %}</a>
+                            <a href="{% url 'ali:tracker' %}" class="btn btn-primary">{% trans "View Project" %}</a>
+                        </div>
+                    </div>
+                    <div class="card border-primary">
+                            <h5 class="card-header">Featured</h5>
+                            <div class="card-body">
+                                <h3 class="card-title">{% blocktrans %}API use - Mentions from Tweets{% endblocktrans %}</h3>
+                                <div class="card-subtitle mb-2">
+                                    <span class="badge badge-pill badge-primary">Python</span>
+                                    <span class="badge badge-pill badge-primary">REST</span>
+                                    <span class="badge badge-pill badge-primary">API</span>
+                                    <span class="badge badge-pill badge-primary">Javascript</span>
+                                    <span class="badge badge-pill badge-primary">Plotly.js</span>
+                                </div>
+                                <p>{% blocktrans %}A small project that gather the tweets from a Twitter account and list with which other accounts it has been in contact with.{% endblocktrans %}</p>
+                            </div>
+                            <div class="card-footer text-right">
+                                <a href="#" class="btn btn-primary d-none">{% trans "View Details" %}</a>
+                                <a href="{% url 'view_twitter_mentions' %}" class="btn btn-primary">{% trans "View Project" %}</a>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class="row m-3">
+            <div class="col">
+                <div class="card-deck">
                     <div class="card">
                         <div class="card-body">
                             <h3 class="card-title">{% blocktrans %}This website{% endblocktrans %}</h3>
@@ -69,35 +110,12 @@
                             <p>{% blocktrans %}A service that collects statistical data about any products/categories searchable at AliExpress.{% endblocktrans %}</p>                        
                         </div>
                         <div class="card-footer text-right">
-                            <a href="#" class="btn btn-primary d-none">{% trans "View Details" %}</a>
+                            <a href="/blog/trackback/4/" class="btn btn-secondary">{% trans "View Details" %}</a>
                             <a href="{% url 'ali:search' %}" class="btn btn-primary">{% trans "View Project" %}</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row m-3">
-            <div class="col">
-                <div class="card-deck">
-                    <div class="card border-primary">
-                        <h5 class="card-header">Featured</h5>
-                        <div class="card-body">
-                            <h3 class="card-title">{% blocktrans %}Web Scraping - AliExpress Tracker{% endblocktrans %}</h3>
-                            <div class="card-subtitle mb-2">
-                                <span class="badge badge-pill badge-primary">Python</span>
-                                <span class="badge badge-pill badge-primary">Scrapy</span>
-                                <span class="badge badge-pill badge-primary">Scrapyd</span>
-                                <span class="badge badge-pill badge-primary">Numpy</span>
-                            </div>
-                            <p>{% blocktrans %}A service that <strong>continuously</strong> collects statistical data about a certain product/category at AliExpress.{% endblocktrans %}</p>
-                        </div>
-                        <div class="card-footer text-right">
-                            <a href="#" class="btn btn-primary d-none">{% trans "View Details" %}</a>
-                            <a href="{% url 'ali:tracker' %}" class="btn btn-primary">{% trans "View Project" %}</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </div>        
     </div>
 {% endblock base-content %}

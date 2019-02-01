@@ -214,3 +214,8 @@ body {
       }
 }
 /* --------------------------------- */
+
+#plotWrapper .svg-container {
+    display: block;
+    margin: auto;
+}

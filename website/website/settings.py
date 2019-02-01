@@ -208,3 +208,7 @@ EMAIL_HOST_USER = os.environ.get('WEBSITE_DJANGO_EMAIL_HOST_USER', 'default@doma
 EMAIL_HOST_PASSWORD = os.environ.get('WEBSITE_DJANGO_EMAIL_HOST_PASSWORD', 'password')
 EMAIL_USE_TLS = os.environ.get('WEBSITE_DJANGO_EMAIL_USE_TLS', 'True') == 'True'
 EMAIL_USE_SSL = os.environ.get('WEBSITE_DJANGO_EMAIL_USE_SSL', 'True') == 'True'
+
+# Twitter
+
+TWITTER_AUTH = os.environ.get('TWITTER_BEARER_TOKEN', 'asdqweasd')

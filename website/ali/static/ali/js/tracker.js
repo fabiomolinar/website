@@ -115,8 +115,7 @@ var _aliTracker = (function(toast){
             name: "Minimum price"
         };
         var layout = {
-            showlegend: true, 
-            title: "Tracker", 
+            showlegend: true,
             yaxis: {title: "Price"}
         };
         var config = {
@@ -129,7 +128,14 @@ var _aliTracker = (function(toast){
         if (showNc){
             traces.push(trace4, trace5, trace6);
         }
-        Plotly.newPlot('plot', traces, layout, config);
+        if (window.innerWidth < 600){
+            layout["legend"] = {
+                y: -0.2,
+                x: 0.0,
+                yanchor: "top"
+            }
+        }
+        Plotly.react('plot', traces, layout, config);
     }
 
     trackerForm.submit(function(e){

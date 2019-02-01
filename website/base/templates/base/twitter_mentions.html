@@ -1,0 +1,115 @@
+{% extends "base/base.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% blocktrans %}AliExpress Search{% endblocktrans %}
+{% endblock title %}
+{% block description %}
+    <meta name="description" content="{% blocktrans %}Retrieving mentions from someone's Tweets{% endblocktrans %}" />
+{% endblock description%}
+{% block keywords %}
+    <meta name="keywords" content="{% blocktrans %}Twitter, API, Mentions, Friends{% endblocktrans %}" />    
+{% endblock keywords%}
+{% block head %}
+    <meta property="og:title" content="Fabio's WebSite - {% blocktrans %}Tweets Mentions{% endblocktrans %}" />
+    <meta property="og:site_name" content="fabiomolinar.com" />
+    <meta property="og:description" content="{% blocktrans %}Retrieving mentions from someone's Tweets{% endblocktrans %}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://fabiomolinar.com{{ request.get_full_path }}" />
+    <meta property="og:image" content="https://fabiomolinar.com{% static 'base/images/icon.png' %}" />
+    <!-- FontAwesome -->
+    <script defer src="https://use.fontawesome.com/releases/v5.6.1/js/all.js" integrity="sha384-R5JkiUweZpJjELPWqttAYmYM1P3SNEJRM6ecTQF05pFFtxmCO+Y1CiUhvuDzgSVZ" crossorigin="anonymous"></script>
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+{% endblock head %}
+
+{% block base-content %}
+    <div class="m-4 pb-1 border-bottom border-primary">
+        <h1>{% blocktrans %}Tweets Mentions{% endblocktrans %}</h1>
+        <p>{% blocktrans %}Retrieving mentions from someone's Tweets.{% endblocktrans %}</p>
+    </div>
+    <div class="container-fluid">
+        <div class="row flex-xl">
+            <div class="col-12 bd-content">
+                <h2>{% blocktrans %}How it works{% endblocktrans %}</h2>
+                <p>{% blocktrans %}Type below the username of a Twitter account (without "@").{% endblocktrans %}</p>
+                <p>{% blocktrans %}On the background, our server will retrieve the tweets from this account by using Twitter's API and search for any mentions to others that this account has made.{% endblocktrans %}</p>
+                <p>
+                    <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse" data-target="#FAQ" aria-expanded="false" aria-controls="FAQ">
+                        More details/FAQ
+                    </button>
+                </p>
+                <div class="collapse" id="FAQ">
+                    <div class="card card-body">
+                        <ul>
+                            <li>{% blocktrans %}Are all tweets of an account analyzed?{% endblocktrans %}</li>
+                            <ul>
+                                <li>{% blocktrans %}No. Only tweets from the last 31 days are analyzed. And only a maximium of 100 tweets are analyzed.{% endblocktrans %}</li>
+                            </ul>
+                            <li>{% blocktrans %}Are all mentions showed?{% endblocktrans %}</li>
+                            <ul>
+                                <li>{% blocktrans %}No, only the top 10 most frequently mentioned accounts.{% endblocktrans %}</li>
+                            </ul>
+                            <li>{% blocktrans %}What is the difference between "main" and "answers"?{% endblocktrans %}</li>
+                            <ul>
+                                <li>{% blocktrans %}"Main" refers to the tweets that the user wrote or quoted.{% endblocktrans %}</li>
+                                <li>{% blocktrans %}"Answers" refers to the tweets that were responses that user wrote.{% endblocktrans %}</li>
+                                <li>{% blocktrans %}Retweets are not taken into consideration.{% endblocktrans %}</li>
+                            </ul>
+                            <li>{% blocktrans %}Have questions or would like <strong>additional/new features</strong>?{% endblocktrans %}</li>
+                            <ul>
+                                {% url 'contact' as contact_url %}
+                                <li>{% blocktrans %}Get in <a href="{{ contact_url }}">contact</a>.{% endblocktrans %}</li>
+                            </ul>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row flex-xl">
+            <div class="col-12 bd-content">
+                <form action="{% url 'run_twitter_mentions' %}" method="POST" id="form_request" novalidate>
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input type="text" name="text" class="form-control form-control-lg text-center" placeholder="{% blocktrans %}Account to analyze{% endblocktrans %}" required>
+                        <div class="invalid-feedback">{% blocktrans %}This field is required{% endblocktrans %}</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block" id="submit_request">{% trans "Run" %}</button>
+                </form>
+            </div>
+        </div>
+        <div id="resultsWrapper" class="d-none">
+            <div class="row flex-xl">
+                <div class="col-12 bd-content">
+                    <hr>
+                    <p id="results_spinner" class="text-center d-none"><span class="fas fa-spinner fa-5x fa-spin" aria-hidden="true"></span></p>
+                </div>
+            </div>
+            <!-- Results -->
+            <div id="plotWrapper" class="row flex-xl d-none">
+                <div class="col-12 bd-content">
+                    <h3>{% blocktrans %}Searched account:{% endblocktrans %} <span></span></h3>
+                    <div id="plot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock base-content %}
+{% block no-compress-scripts %}
+   <!-- Toastr -->
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+   <!-- Plotly -->
+   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+   {% if LANGUAGE_CODE == 'pt' %}
+       <script src="https://cdn.plot.ly/plotly-locale-pt-br-latest.js"></script>
+       <script>Plotly.setPlotConfig({locale: 'pt-BR'})</script>
+   {% endif %}
+{% endblock no-compress-scripts %}
+{% block scripts %}
+    <script src="{% static 'base/js/twitterMentions.js' %}"></script>
+{% endblock scripts %}
+{% block onload %}
+    $('[data-toggle="tooltip"]').tooltip();
+{% endblock onload %}
