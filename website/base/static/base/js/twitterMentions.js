@@ -127,10 +127,11 @@ var _aliSearch = (function(toast){
             return (a[3] < b[3]) ? 1 : -1;
         });
         let top10Results = results.slice(0,10);
-        let otherResults = results.slice(10,results.length).reduce((a,c) => ["others",a[1] + c[1], a[2] + c[2], a[3] + c[3]]);
-        top10Results.push(otherResults);
         let labels = top10Results.map(x => '<a href="https://twitter.com/' + x[0] + '">' + x[0] + '</a>').reverse();
-        labels[0] = "others";
+        if (results.length > 10){
+            let otherResults = results.slice(10,results.length).reduce((a,c) => ["others",a[1] + c[1], a[2] + c[2], a[3] + c[3]]);
+            top10Results.push(otherResults);
+        }
         var trace1 = {
             x: top10Results.map(x => x[1]).reverse(),
             y: labels,

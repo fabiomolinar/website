@@ -53,10 +53,6 @@ def run_twitter_mentions(request):
         return HttpResponseBadRequest(_("No data found for this account."))
     return JsonResponse({"data": tm.mentions})
     
-    # Update Throttler
-    t = Throttler(ip=session_ip, session_id=session_id)
-    t.save()
-    
 def request_is_valid(request, payload):
     """Checks if the request for data is valid
 
