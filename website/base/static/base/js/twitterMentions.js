@@ -48,11 +48,10 @@ var _aliSearch = (function(toast){
             plotWrapper.addClass("d-none");
             let msg = "";
             if (typeof jqXHR.responseText == "string" && jqXHR.responseText != "" && jqXHR.responseText.length < 70){
-                msg = jqXHR.responseText;
+                toast.warning(jqXHR.responseText,"Something went wrong...");
             } else {
-                msg = errorThrown;
+                toast.warning(errorThrown + " Try again in a few minutes. You may also try to check your internet connection.","Something went wrong...");
             }
-            toast.warning(msg + " Try again in a few minutes. You may also try to check your internet connection.","Something went wrong...");
         }).always(function(data){
             spinner.addClass("d-none");
             var timeEnd = new Date();
