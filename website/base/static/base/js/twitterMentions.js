@@ -66,7 +66,7 @@ var _aliSearch = (function(toast){
 
     var noMentions = function(){
         resultsWrapper.addClass("d-none");
-        toast.warning("This user didn't mention anybody on its tweets.","No mentions found");
+        toast.info("This user didn't mention anybody on its tweets.","No mentions found");
     };
 
     var paintPlot = function(data, AccountName){

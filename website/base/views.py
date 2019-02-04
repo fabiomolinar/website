@@ -26,6 +26,8 @@ def view_twitter_mentions(request):
 
 def run_twitter_mentions(request):
     text_to_search = request.POST.get('text', None)
+    if text_to_search[0:1] == "@":
+        text_to_search = text_to_search[1:len(text_to_search)]
     session_ip = get_client_ip(request)
     session_id = 'no session id'
     if request.session.session_key:
