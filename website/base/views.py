@@ -46,8 +46,9 @@ def run_twitter_mentions(request):
     tm = TwitterMentions(text_to_search)
     if not tm.get_tweets():
         return HttpResponseServerError(tm.request_message)
-    t = Throttler(ip=session_ip, session_id=session_id)
-    t.save()
+    if not settings.DEBUG:
+        t = Throttler(ip=session_ip, session_id=session_id)
+        t.save()
     if len(tm.mentions) == 0:
         return HttpResponseBadRequest(_("No data found for this account."))
     return JsonResponse({"data": tm.mentions})
