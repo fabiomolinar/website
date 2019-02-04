@@ -71,6 +71,9 @@ var _aliSearch = (function(toast){
     var paintPlot = function(data, AccountName){
         // A tweet object can be a original tweet, an answer to a tweet, a quoted tweet or a retweet
         // Don't count retweets
+        if (AccountName.slice(0,1) == "@"){
+            AccountName = AccountName.slice(1,AccountName.length)
+        }
         let mentions = {};
         for (let i = 0; i < data.length; i++) {
             const e = data[i];
