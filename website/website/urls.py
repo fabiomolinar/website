@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.urls import path, include, re_path
 from django.conf.urls.i18n import i18n_patterns
-
 from django.contrib import admin
 from django.contrib.sitemaps import views
 
@@ -41,7 +40,7 @@ sitemaps = {
 
 # URLs witouht Internationalization
 urlpatterns = [
-    path('sitemap.xml', views.index, {'sitemaps': sitemaps}),
+    path('sitemap.xml', views.index, {'sitemaps': sitemaps}, name='my_sitemaps'),
     path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('i18n/', include('django.conf.urls.i18n')),
 ]

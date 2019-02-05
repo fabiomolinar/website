@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.http import JsonResponse, HttpResponseBadRequest, HttpResponseServerError, HttpResponseForbidden
 from django.conf import settings
@@ -20,6 +20,9 @@ def about(request):
 
 def contact(request):
     return render(request, 'base/contact.html')
+
+def return_sitemaps(request):
+    return redirect('my_sitemaps', permanent=True)
 
 def view_twitter_mentions(request):
     return render(request, 'base/twitter_mentions.html')

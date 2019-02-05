@@ -6,13 +6,18 @@ class StaticViewSitemap(sitemaps.Sitemap):
     protocol = 'https'
 
     def items(self):
-        return ['index', 'projects', 'zinnia:entry_archive_index', 'about', 'contact']
+        return [
+            'index', 'projects', 'about', 'contact',
+            'view_twitter_mentions',
+            'zinnia:entry_archive_index', 
+            'ali:search', 'ali:tracker'
+        ]
 
     def location(self, item):
         return reverse(item)
 
     def changefreq(self, item):
-        default_freq = 'daily'
+        default_freq = 'weekly'
         freqs = {
             'index': 'weekly',
             'projects': 'weekly',
