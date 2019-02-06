@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin/
 Crawl-delay: 86400000
-Sitemap: https://www.fabiomolinar.com/sitemap.xml
+Sitemap: https://fabiomolinar.com/sitemap.xml
