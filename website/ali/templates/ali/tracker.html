@@ -37,7 +37,7 @@
                 <p>{% blocktrans %}Our server collects data about a predefined product/category from AliExpress daily. This data is collected from AliExpress search results page. This data is shown in a graphical form below.{% endblocktrans %}</p>
                 <p>
                     <button class="btn btn-outline-info btn-sm" type="button" data-toggle="collapse" data-target="#FAQ" aria-expanded="false" aria-controls="FAQ">
-                        More details/FAQ
+                        {% blocktrans %}More details/FAQ{% endblocktrans %}
                     </button>
                 </p>
                 <div class="collapse" id="FAQ">
@@ -64,15 +64,15 @@
         <hr>
         <div class="row flex-xl">
             <div class="col-12 bd-content">
-                <h3>Searched text: <strong>{{ search_text }}</strong></h3>
+                <h3>{% blocktrans %}Searched text:{% endblocktrans %} <strong>{{ search_text }}</strong></h3>
                 <p id="results_spinner" class="text-center"><span class="fas fa-spinner fa-5x fa-spin" aria-hidden="true"></span></p>
-                <button id="retry_button" type="button" class="btn btn-primary btn-lg btn-block d-none">Retry</button>
+                <button id="retry_button" type="button" class="btn btn-primary btn-lg btn-block d-none">{% trans "Retry" %}</button>
                 <div id="plotWrapper" class="d-none">
-                    <p>Values in <span style="color:rgb(0,100,80)">green</span> are related to the <span style="color:rgb(0,100,80)">corrected</span> calculations for outliers, whereas the ones in <span style="color:rgb(0,176,246)">blue</span> are <span style="color:rgb(0,176,246)">non-corrected</span>.</p>
+                    <p>{% blocktrans %}Values in <span style="color:rgb(0,100,80)">green</span> are related to the <span style="color:rgb(0,100,80)">corrected</span> calculations for outliers, whereas the ones in <span style="color:rgb(0,176,246)">blue</span> are <span style="color:rgb(0,176,246)">non-corrected</span>.{% endblocktrans %}</p>
                     <div class="m-1">
-                        <button id="nc_only" type="button" class="btn btn-primary btn-sm">Non-corrected only</button>
-                        <button id="c_only" type="button" class="btn btn-primary btn-sm">Corrected only</button>
-                        <button id="nc_and_c" type="button" class="btn btn-primary btn-sm">Both</button>
+                        <button id="nc_only" type="button" class="btn btn-primary btn-sm">{% blocktrans %}Non-corrected only{% endblocktrans %}</button>
+                        <button id="c_only" type="button" class="btn btn-primary btn-sm">{% blocktrans %}Corrected only{% endblocktrans %}</button>
+                        <button id="nc_and_c" type="button" class="btn btn-primary btn-sm">{% blocktrans %}Both{% endblocktrans %}</button>
                     </div>
                     <div id="plot"></div>
                 </div>

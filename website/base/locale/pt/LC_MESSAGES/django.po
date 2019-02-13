@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-12-31 11:02+0100\n"
+"POT-Creation-Date: 2019-02-13 09:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,12 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: templates/base/about.html:8
+#: projects/twitter/mentions.py:30 projects/twitter/mentions.py:34
+msgid "There was a problem while accessing the API"
+msgstr "Houve um problema ao acessar a API"
+
+#: projects/twitter/mentions.py:36
+msgid "Success"
+msgstr "Sucesso"
+
+#: templates/base/about.html:6 templates/base/about.html:17
+msgid "About me"
+msgstr "Sobre"
+
+#: templates/base/about.html:9 templates/base/about.html:19
 msgid "A little about me."
 msgstr "Um pouco sobre mim."
 
-#: templates/base/about.html:11 templates/base/index.html:12
-#: templates/base/projects.html:11
+#: templates/base/about.html:12 templates/base/index.html:12
+#: templates/base/projects.html:12
 msgid ""
 "Fabio Thomaz Molinar, Fabio Molinar, Blog, Personal site, Projects, Web, "
 "Development, IoT, Industry 4.0, Gas Turbines"
@@ -31,19 +43,19 @@ msgstr ""
 "Fabio Thomaz Molinar, Fabio Molinar, Blog, Site pessoal, Projetos, Web, "
 "Desenvolvimento, IoT, Indústria 4.0, Turbinas a Gás"
 
-#: templates/base/about.html:12 templates/base/index.html:13
-#: templates/base/projects.html:12
+#: templates/base/about.html:13 templates/base/index.html:13
+#: templates/base/projects.html:13
 msgid "IoT, Industry 4.0, Gas Turbines, Utilities, Power, Power generation"
 msgstr ""
 "IoT, Indústria 4.0, Turbinas a Gás, Utilidades, Energia, Produção de Energia"
 
-#: templates/base/about.html:22 templates/base/base.html:57
+#: templates/base/about.html:28 templates/base/base.html:77
 msgid "About"
 msgstr "Sobre"
 
-#: templates/base/about.html:27
+#: templates/base/about.html:32
 msgid ""
-"I am a <strong>Gas Turbines Control Engineer</strong> professional who is "
+"I am an <strong>Automation & Control Engineer</strong> professional who is "
 "passionate about technology, control theory and web technologies. In order "
 "to be able to play in different control systems, I have learned to develop "
 "control theory so that I can deploy it in different control platforms; "
@@ -73,7 +85,7 @@ msgstr ""
 "gosto mesmo é de ver o software que ajudei a criar a rodar as turbinas a gás "
 "e a produzir enormes quantidades de energia para o sistema elétrico."
 
-#: templates/base/about.html:28
+#: templates/base/about.html:33
 msgid ""
 "In my time out of the office I am a <strong>web developer geek</strong>. I "
 "am fascinated with the power of web technologies to bring people, resources "
@@ -91,23 +103,23 @@ msgstr ""
 "provavelmente irão nos trazer. Espero poder fazer parte daqueles ajudando a "
 "formar essa mudança e trazer um melhor futuro para gerações futuras."
 
-#: templates/base/about.html:29
+#: templates/base/about.html:34
 msgid "For more details, take a look at my LinkedIn page."
 msgstr "Para mais detalhes, veja minha página no LinkedIn."
 
-#: templates/base/about.html:34
+#: templates/base/about.html:39
 msgid "Storyline"
 msgstr "Linha do tempo"
 
-#: templates/base/about.html:40
+#: templates/base/about.html:45
 msgid "Hobbyist"
 msgstr "Hobbyista"
 
-#: templates/base/about.html:41
+#: templates/base/about.html:46
 msgid "always"
 msgstr "sempre"
 
-#: templates/base/about.html:44
+#: templates/base/about.html:49
 msgid ""
 "Been playing around with PHP, Javascript, Python, Laravel, Android, "
 "PhoneGap, Meteor.js, Node.js, Angular, React, Bootstrap."
@@ -115,7 +127,7 @@ msgstr ""
 "Trabalhando com PHP, Javascript, Python, Laravel, Android, PhoneGap, Meteor."
 "js, Node.js, Angular, React, Bootstrap."
 
-#: templates/base/about.html:45
+#: templates/base/about.html:50
 msgid ""
 "But most recently I decided to settle down and focus all my efforts on "
 "Python and its amazing frameworks and libraries. This site and its contents "
@@ -127,23 +139,23 @@ msgstr ""
 "foram escritos quase que exclusivamente em Python usando Django. E seus "
 "aplicativos são baseados em Scrapy, scikit-learn, numpy e pandas."
 
-#: templates/base/about.html:53
+#: templates/base/about.html:58
 msgid "Lead Gas Turbines Controls Engineer"
 msgstr "Engenheiro de Controle de Turbinas a Gás Pleno"
 
-#: templates/base/about.html:54
+#: templates/base/about.html:59
 msgid "today"
 msgstr "hoje"
 
-#: templates/base/about.html:54
+#: templates/base/about.html:59
 msgid "Engineering Design Center (a General Electric company)"
 msgstr "Engineering Design Center (uma empresa General Electric)"
 
-#: templates/base/about.html:54
+#: templates/base/about.html:59
 msgid "Poland"
 msgstr "Polônia"
 
-#: templates/base/about.html:57
+#: templates/base/about.html:62
 msgid ""
 "Working for GE Cross-Fleet Gas Turbines Solutions. Responsible to develop "
 "control system projects of heavy duty gas turbines from other manufactures "
@@ -155,7 +167,7 @@ msgstr ""
 "outros fabricantes (oOEM). Principal foco nos sistemas Diasys Netmation em "
 "turbinas Mitsubishi e T3000 em turbinas Siemens."
 
-#: templates/base/about.html:58
+#: templates/base/about.html:63
 msgid ""
 "Development of control software for GE Aeroderivative Gas Turbines LM2500, "
 "LM6000 and LMS in GAP (MicroNet - Woodward), ToolboxST (MarkVIe - GE) and "
@@ -167,11 +179,11 @@ msgstr ""
 "GE) e Proficy Machine Edition (RX3i). Responsável também por prover suporte "
 "aos clientes com relação a as turbinas já mencionadas."
 
-#: templates/base/about.html:66
+#: templates/base/about.html:71
 msgid "Information Systems Project Management"
 msgstr "Gerencimento de Projetos de Sistemas de Informação"
 
-#: templates/base/about.html:70
+#: templates/base/about.html:75
 msgid ""
 "The University of Liverpool Online MSc in Information Systems Management "
 "focuses on innovation management and leadership in information systems "
@@ -185,7 +197,7 @@ msgstr ""
 "growth, innovation and change within organisations, by leveraging the power "
 "of technology."
 
-#: templates/base/about.html:71
+#: templates/base/about.html:76
 msgid ""
 "This BCS-accredited programme offers the opportunity to develop a deep "
 "understanding of how technology enables business, and how successful "
@@ -201,16 +213,16 @@ msgstr ""
 "security and big data analytics, one have the opportunity to acquire "
 "specialist insights."
 
-#: templates/base/about.html:79
+#: templates/base/about.html:84
 msgid "Co-founder"
 msgstr "Co-fundador"
 
-#: templates/base/about.html:80 templates/base/about.html:93
-#: templates/base/about.html:118
+#: templates/base/about.html:85 templates/base/about.html:98
+#: templates/base/about.html:123
 msgid "Brazil"
 msgstr "Brasil"
 
-#: templates/base/about.html:83
+#: templates/base/about.html:88
 msgid ""
 "Web service focused on improving the user experience of restaurants "
 "customers and empowering restaurant owners with data and insights to drive "
@@ -220,7 +232,7 @@ msgstr ""
 "fortalecer donos de restaurates com dados e dicas para guiar suas "
 "estrataégias e melhorias."
 
-#: templates/base/about.html:84
+#: templates/base/about.html:89
 msgid ""
 "The platform collected data from restaurnt users and created especialized "
 "reports and feedback to restaurant owners to help driving their improvement."
@@ -229,11 +241,11 @@ msgstr ""
 "especializados e feedback para os donos de restaurantes poderem guiar suas "
 "estratégias."
 
-#: templates/base/about.html:92
+#: templates/base/about.html:97
 msgid "Gas Turbines Field Service Engineer"
 msgstr "Engenheiro de Campo de Turbinas a Gás"
 
-#: templates/base/about.html:96
+#: templates/base/about.html:101
 msgid ""
 "Responsible for the project commissioning, system updates and start-up of "
 "control and automation systems for rotating machines, mainly turbines, "
@@ -245,31 +257,31 @@ msgstr ""
 "turbinas, compressores e geradores de alta potência para usinas elétricas e "
 "para o setor de óleo e gás."
 
-#: templates/base/about.html:104
+#: templates/base/about.html:109
 msgid "Mechatronics Engineering"
 msgstr "Engenheiro Mecatrônico"
 
-#: templates/base/about.html:105
+#: templates/base/about.html:110
 msgid "Germany"
 msgstr "Alemanha"
 
-#: templates/base/about.html:108
+#: templates/base/about.html:113
 msgid "One year exchange program."
 msgstr "Programa de intercâmbio de um ano."
 
-#: templates/base/about.html:109
+#: templates/base/about.html:114
 msgid "Field of study: mechatronics."
 msgstr "Campo de estudo: mecatrônica."
 
-#: templates/base/about.html:117
+#: templates/base/about.html:122
 msgid "Control and Automation Engineering"
 msgstr "Engenharia de Controle e Automação"
 
-#: templates/base/about.html:121
+#: templates/base/about.html:126
 msgid "Bachelor of Engineering - Controls and Automation Engineering."
 msgstr "Bacharel em Engenharia - Engenharia de Controle e Automação."
 
-#: templates/base/about.html:122
+#: templates/base/about.html:127
 msgid ""
 "Control engineering or control systems engineering is an engineering "
 "discipline that applies automatic control theory to design systems with "
@@ -279,12 +291,12 @@ msgstr ""
 "de controle para desenvolver sistemas com comportamentos desejados em "
 "ambientes de controle."
 
-#: templates/base/about.html:123
+#: templates/base/about.html:128
 msgid ""
 "Extra activities and societies: junior company, researcher in economics."
 msgstr "Atividades extras: empresa júnior, pesquisador em economia."
 
-#: templates/base/about.html:124
+#: templates/base/about.html:129
 msgid ""
 "Thesis: energy control and management in a DC bus supplied by power sources "
 "with different electric and dynamic characteristics."
@@ -292,7 +304,8 @@ msgstr ""
 "Gerenciamento do fluxo de energia em um barramento alimentado por diferentes "
 "fontes."
 
-#: templates/base/base.html:15 templates/base/index.html:9
+#: templates/base/base.html:29 templates/base/index.html:9
+#: templates/base/index.html:18
 msgid ""
 "Fabio's personal website. Despite being my hobby, it is also used as a "
 "testing environment for my side projects."
@@ -301,51 +314,55 @@ msgstr ""
 "ambiente de teste para meus projetos secundários."
 
 #. Translators: Home as the home page of a website
-#: templates/base/base.html:42
+#: templates/base/base.html:62 templates/base/index.html:6
+#: templates/base/index.html:16
 msgid "Home"
 msgstr "Página Inicial"
 
-#: templates/base/base.html:47 templates/base/projects.html:17
+#: templates/base/base.html:67 templates/base/projects.html:6
+#: templates/base/projects.html:16 templates/base/projects.html:25
 msgid "Projects"
 msgstr "Projetos"
 
-#: templates/base/base.html:52
+#: templates/base/base.html:72
 msgid "Blog"
 msgstr "Blog"
 
-#: templates/base/base.html:62 templates/base/contact.html:20
+#: templates/base/base.html:82 templates/base/contact.html:6
+#: templates/base/contact.html:15 templates/base/contact.html:26
 msgid "Contact"
 msgstr "Contato"
 
-#: templates/base/base.html:99
+#: templates/base/base.html:124
 msgid "Copyright"
 msgstr "Direitos autorais"
 
-#: templates/base/contact.html:8
+#: templates/base/contact.html:9 templates/base/contact.html:17
 msgid "How to get in contact with me."
 msgstr "Como entrar em contato comigo."
 
-#: templates/base/contact.html:11
+#: templates/base/contact.html:12
 msgid "Fabio Thomaz Molinar, Fabio Molinar, Contact"
 msgstr "Fabio Thomaz Molinar, Fabio Molinar, Contato"
 
-#: templates/base/contact.html:28
+#: templates/base/contact.html:33
 msgid "Get in touch..."
 msgstr "Entre em contato..."
 
-#: templates/base/index.html:18
-msgid "Hi, I'm Fabio."
+#: templates/base/index.html:26
+msgid "Hi, I'm Fabio!"
 msgstr "Olá, me chamo Fábio."
 
-#: templates/base/index.html:19
-msgid "Web developer, Industrial Automation Engineer, Husband & Father."
+#: templates/base/index.html:27
+msgid ""
+"Back-End Web developer, Industrial Automation Engineer, Husband & Father."
 msgstr "Programador Web, Engenheiro de Controle e Automação, Marido & Pai."
 
-#: templates/base/index.html:24
+#: templates/base/index.html:32
 msgid "Welcome to my personal website."
 msgstr "Bem vindo ao meu site pessoal."
 
-#: templates/base/index.html:27
+#: templates/base/index.html:35
 #, python-format
 msgid ""
 "This is the place where I run some of my personal <a href=\"%(project_url)s"
@@ -356,35 +373,167 @@ msgstr ""
 "\">projetos</a> pessoais e onde tiro meus hobbies do papel. É também o local "
 "onde se encontra meu <a href=\"%(blog_url)s\">blog</a>."
 
-#: templates/base/index.html:28
+#: templates/base/index.html:36
 msgid ""
-"This is where I come to when I am not at work, when my wife is busy and my "
-"children are sleeping. :)"
+"When I am not at work, when my wife is busy and my children are sleeping, "
+"this is the place I come to. :)"
 msgstr ""
 "É para aqui que venho quando não estou no trabalho, quando minha esposa está "
 "ocupada e meus filhos estão dormindo."
 
-#: templates/base/index.html:33 templates/base/index.html:36
+#: templates/base/index.html:41 templates/base/index.html:45
 msgid "Website architecture"
 msgstr "Arquitetura do site"
 
-#: templates/base/index.html:34
+#: templates/base/index.html:42
 msgid ""
 "Below an illustrative image of the current state of this website's "
 "architecture"
-msgstr ""
-"Abaixo uma figura ilustrativa da atual arquitetura "
-"desse site"
+msgstr "Abaixo uma figura ilustrativa da atual arquitetura desse site"
 
-#: templates/base/index.html:35
+#: templates/base/index.html:43
 msgid "The green dotted lines represent different Docker containers"
-msgstr "Os retângulos verdes com linhas listradas representam diferentes containers Docker"
+msgstr ""
+"Os retângulos verdes com linhas listradas representam diferentes containers "
+"Docker"
 
-#: templates/base/projects.html:24
+#: templates/base/index.html:44
+msgid ""
+"You can read more about it on <a href=\"/blog/trackback/1/\">this blog post</"
+"a>."
+msgstr ""
+"Leia mais sobre isto <a href=\"/blog/trackback/1/\">neste blog post</a>."
+
+#: templates/base/index.html:50
+msgid "Translation: a work [always] in progress..."
+msgstr "Tradução: um trabalho [sempre] em progresso..."
+
+#: templates/base/index.html:51
+msgid ""
+"I am Brazilian, I have lived and studied in Germany, I currently live in "
+"Poland and I am also an Italian citizen."
+msgstr ""
+"Sou Brasileiro, morei e estudei na Alemanha, atualmente moro na Polônia e "
+"sou também um cidadão Italiano."
+
+#: templates/base/index.html:52
+msgid ""
+"I had a lot of contact with the German language (used to speak it) and I am "
+"aiming to learn Italian. But on my daily basis I use English, Portuguese and "
+"Polish to communicate at work and with family/friends."
+msgstr ""
+"Eu tive bastante contato com a língua alemã (eu sabia falar alemão) e estou "
+"planejando aprender o italiano. Mas no meu dia a dia eu uso o inglês, "
+"português e polonês para me comunicar no trabalho e com meus amigos/"
+"familiares."
+
+#: templates/base/index.html:53
+msgid ""
+"Still, translating the entire content of this site takes time and is "
+"something I work on sporadically."
+msgstr ""
+"Mesmo assim, traduzir todo o conteúdo deste site leva tempo e é algo no qual "
+"eu trabalho de forma esporádica."
+
+#: templates/base/index.html:55
+msgid "Therefore, expect to:"
+msgstr "Sendo assim, expecte: "
+
+#: templates/base/index.html:57
+msgid ""
+"always find the content of this site written in English (the language I have "
+"been using the most)"
+msgstr ""
+"sempre encontrar o conteúdo deste site escrito em inglês (a língua que eu "
+"uso com mais frequência)"
+
+#: templates/base/index.html:58
+msgid ""
+"find some content in Portuguese (since I have been testing Django's "
+"internationalization package)"
+msgstr ""
+"encontrar conteúdo parcialmente traduzido para o Português (uma vez que "
+"estou a testar a biblioteca de tradução do Django)"
+
+#: templates/base/index.html:59
+msgid "full support for Portuguese and other languages sometime in the future."
+msgstr ""
+"suporte completo para português e outras línguas em algum momento no futuro"
+
+#: templates/base/index.html:66
+msgid "UX, UI and Web Design"
+msgstr "UX, UI e Design Web"
+
+#: templates/base/index.html:67
+msgid ""
+"Not my strong point and not something I am personally curious about. "
+"Therefore, when it comes to design, don't expect to find anything more "
+"complex than Bootstrap or packaged ready components here."
+msgstr ""
+"Não é meu ponto forte nem algo pelo qual sou pessoalmente interessado. Assim "
+"sendo, com relação a design, não espere encontrar aqui nada muito mais "
+"complexo do que Bootstrap ou componentes de design já preparados."
+
+#: templates/base/index.html:68
+msgid ""
+"Still, I will try to do my best not to make this site looks like a <a href="
+"\"http://www.columbia.edu/~fdc/sample.html\">plain html site</a>. :)"
+msgstr ""
+"Mesmo assim, vou fazer o meu melhor para que esse site não pareça um <a href="
+"\"http://www.columbia.edu/~fdc/sample.html\">site em html puro</a>. :)"
+
+#: templates/base/projects.html:9
+msgid "List of the projects I have worked or am working on."
+msgstr "Lista dos projetos no quais trabalhei ou estou trabalhando."
+
+#: templates/base/projects.html:18
+msgid "List of the projects I have worked/am working on."
+msgstr "Lista dos projetos no quais trabalhei ou estou trabalhando."
+
+#: templates/base/projects.html:31 templates/base/projects.html:48
+#: templates/base/projects.html:101
+msgid "Featured"
+msgstr "Destaque"
+
+#: templates/base/projects.html:33
+msgid "Web Scraping - AliExpress Tracker"
+msgstr "Web Scraping - AliExpress Tracker"
+
+#: templates/base/projects.html:40
+msgid ""
+"A service that <strong>continuously</strong> collects statistical data about "
+"a certain product/category at AliExpress."
+msgstr ""
+"Um serviço web que coleta de forma <strong>continua</strong> dados de "
+"qualquer produto \"procurável\" no site AliExpress."
+
+#: templates/base/projects.html:43 templates/base/projects.html:61
+#: templates/base/projects.html:96 templates/base/projects.html:113
+msgid "View Details"
+msgstr "Veja detalhes"
+
+#: templates/base/projects.html:44 templates/base/projects.html:62
+#: templates/base/projects.html:114
+msgid "View Project"
+msgstr "Veja o projeto"
+
+#: templates/base/projects.html:50
+msgid "API use - Mentions from Tweets"
+msgstr "Uso de APIs - Menções em Tweets"
+
+#: templates/base/projects.html:58
+msgid ""
+"A small project that gather the tweets from a Twitter account and list with "
+"which other accounts it has been in contact with."
+msgstr ""
+"Um pequeno projeto que reune os tweets de um determinado usuário e lista com "
+"quais outros usuários ele esteve em contato."
+
+#: templates/base/projects.html:73
 msgid "This website"
 msgstr "Esse site"
 
-#: templates/base/projects.html:32
+#: templates/base/projects.html:81
 msgid ""
 "This website is powered by Django and its technology stack include Docker, "
 "Nginx and Gunicorn. At least for now."
@@ -392,16 +541,15 @@ msgstr ""
 "Esse site é baseado em Django e seu technology stack inclui Docker, Nginx e "
 "Gunicorn. Ao menos por enquanto."
 
-#: templates/base/projects.html:34 templates/base/projects.html:46
-#: templates/base/projects.html:59
-msgid "View Details"
-msgstr "Veja detalhes"
+#: templates/base/projects.html:83
+msgid "View Blog Post"
+msgstr "Veja o Blog Post"
 
-#: templates/base/projects.html:38
+#: templates/base/projects.html:87
 msgid "My blog"
 msgstr "Meu blog"
 
-#: templates/base/projects.html:44
+#: templates/base/projects.html:93
 msgid ""
 "I wanted to be able to include a blog to my website without the need to "
 "create one from scratch. Django's app structure and Zinnia came in handy so "
@@ -411,13 +559,148 @@ msgstr ""
 "um do zero. A estrutura em aplicativos do Django e o Zinnia vieram a calhar "
 "para que eu conseguisse exatamente isso."
 
-#: templates/base/projects.html:50
-msgid "Web Scraping - AliExpress"
+#: templates/base/projects.html:97
+msgid "View Blog"
+msgstr "Veja o Blog"
+
+#: templates/base/projects.html:103
+msgid "Web Scraping - AliExpress Search"
 msgstr "Web Scraping - AliExpress"
 
-#: templates/base/projects.html:57
+#: templates/base/projects.html:110
 msgid ""
-"A service that collects data about any products searchable at AliExpress."
+"A service that collects statistical data about any products/categories "
+"searchable at AliExpress."
 msgstr ""
 "Um serviço web que coleta dados de qualquer produto \"procurável\" no site "
 "AliExpress."
+
+#: templates/base/twitter_mentions.html:6
+msgid "Twitter Mentions"
+msgstr "Menções no Twitter"
+
+#: templates/base/twitter_mentions.html:9
+#: templates/base/twitter_mentions.html:17
+msgid "Retrieving mentions from someone's Tweets"
+msgstr "Coletando menções dos tweets the alguém"
+
+#: templates/base/twitter_mentions.html:12
+msgid "Twitter, API, Mentions, Friends"
+msgstr "Twitter, API, Menções, Amigos"
+
+#: templates/base/twitter_mentions.html:15
+#: templates/base/twitter_mentions.html:29
+msgid "Tweets Mentions"
+msgstr "Menções em Tweets"
+
+#: templates/base/twitter_mentions.html:30
+msgid "Retrieving mentions from someone's Tweets."
+msgstr "Coletando menções dos tweets the alguém."
+
+#: templates/base/twitter_mentions.html:35
+msgid "How it works"
+msgstr "Como funciona"
+
+#: templates/base/twitter_mentions.html:36
+msgid "Type below the username of a Twitter account."
+msgstr "Digite abaixo o nome de usuário de algum usuário do Twitter."
+
+#: templates/base/twitter_mentions.html:37
+msgid ""
+"On the background, our server will retrieve the tweets from this account by "
+"using Twitter's API and search for any mentions to others that this account "
+"has made."
+msgstr ""
+"No fundo, o servidor irá coletar os tweets da conta selecionada usando a API "
+"do Twitter and fará uma busca por todas as menções a outras contas do "
+"Twitter que esse usuário tenha feito."
+
+#: templates/base/twitter_mentions.html:46
+msgid "Are all tweets of an account analyzed?"
+msgstr "Todos os tweets da conta são analizados?"
+
+#: templates/base/twitter_mentions.html:48
+msgid ""
+"No. Only tweets from the last 31 days are analyzed. And only a maximium of "
+"100 tweets are analyzed."
+msgstr ""
+"Não. Apenas os tweets dos últimos 31 dias são analizados. E no máximo 100 "
+"tweets são analizados."
+
+#: templates/base/twitter_mentions.html:50
+msgid "Are all mentions showed?"
+msgstr "Todas as menções são mostradas?"
+
+#: templates/base/twitter_mentions.html:52
+msgid "No, only the top 10 most frequently mentioned accounts."
+msgstr "Não, apenas as 10 menções mais frequentes."
+
+#: templates/base/twitter_mentions.html:54
+msgid "What is the difference between \"main\" and \"answers\"?"
+msgstr "Qual a diferença entre \"principal\" e \"respostas\"?"
+
+#: templates/base/twitter_mentions.html:56
+msgid "\"Main\" refers to the tweets that the user wrote or quoted."
+msgstr "\"Principal\" se refere aos tweets escritos ou citados pelo usuário."
+
+#: templates/base/twitter_mentions.html:57
+msgid "\"Answers\" refers to the tweets that were responses that user wrote."
+msgstr "\"Respostas\" se refere aos tweets de resposta do usuário."
+
+#: templates/base/twitter_mentions.html:58
+msgid "Retweets are not taken into consideration."
+msgstr "Retweets não são levados em consideração."
+
+#: templates/base/twitter_mentions.html:60
+msgid "Have questions or would like <strong>additional/new features</strong>?"
+msgstr ""
+"Tem perguntas ou gostaria de <strong>recursos novos/adicionais</strong>?"
+
+#: templates/base/twitter_mentions.html:63
+#, python-format
+msgid "Get in <a href=\"%(contact_url)s\">contact</a>."
+msgstr "Entre em <a href=\"%(contact_url)s\">contato</a>."
+
+#: templates/base/twitter_mentions.html:76
+msgid "Account to analyze"
+msgstr "Conta a ser analizada"
+
+#: templates/base/twitter_mentions.html:77
+msgid "This field is required"
+msgstr "Esse campo é obrigatório"
+
+#: templates/base/twitter_mentions.html:79
+msgid "Run"
+msgstr "Pesquisar"
+
+#: templates/base/twitter_mentions.html:93
+msgid "Searched account:"
+msgstr "Conta pesquisada:"
+
+#: views.py:44
+msgid "Too many requests within an hour"
+msgstr "Excedido o número máximo de acesso por hora"
+
+#: views.py:47
+msgid "Too many requests within last 24 hours"
+msgstr "Excedido o número máximo de acesso nas últimas 24 horas"
+
+#: views.py:56
+msgid "No data found for this account."
+msgstr "Nenhum dado encontrado para essa conta."
+
+#: views.py:71
+msgid "Only Ajax calls are permitted"
+msgstr "Apenas chamadas Ajax são permitidas"
+
+#: views.py:73
+msgid "Only POST requests are permistted"
+msgstr "Apenas chamadas do tipo POST são permitidas"
+
+#: views.py:75
+msgid "No text to search provided"
+msgstr "Nenhum texto foi fornecido para a pesquisa"
+
+#: views.py:77
+msgid "Invalid search object"
+msgstr "Objeto de pesquisa inválido"
