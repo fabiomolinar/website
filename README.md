@@ -237,6 +237,8 @@ python manage.py shell
 
 [Reference](https://www.digitalocean.com/community/tutorials/how-to-set-up-ssh-keys-on-ubuntu-1804)
 
+`ssh fabio@$DO_IP`
+
 ### Initial Server Setup
 
 [Reference](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
