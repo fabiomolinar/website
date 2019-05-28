@@ -283,4 +283,4 @@ To renew the certificates:
 
 To restart a container while system is up and running:
 
-``
+`sudo docker-compose up -d --no-deps --build <service_name>`
