@@ -51,6 +51,10 @@
                             <ul>
                                 <li>{% trans "No." %}</li>
                             </ul>
+                            <li>{% blocktrans %}How many days of data is returned?{% endblocktrans %}</li>
+                            <ul>
+                                <li>{% blocktrans %}A maximum of 60 days of data.{% endblocktrans %}</li>
+                            </ul>
                             <li>{% blocktrans %}Have questions or would like <strong>additional/new features</strong>?{% endblocktrans %}</li>
                             <ul>
                                 {% url 'contact' as contact_url %}

@@ -33,7 +33,7 @@ def get_tracker(request):
         'count': 0,
         'data': []
     }
-    query = Search.objects.filter(search_text=text_to_search)
+    query = Search.objects.filter(search_text=text_to_search)[:60]
     count = query.count()
     if count != 0:
         data['data'] = list(query.order_by('-id').values(*standard_fields_to_client))
