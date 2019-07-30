@@ -192,6 +192,32 @@ mysite=> ALTER USER mysite WITH PASSWORD '<new password here>';
 mysite=> \q
 ```
 
+### Managing the DB inside the Docker container
+
+Once inside the server, it's possible to connect to the PostgreSQL container by using the following command:
+
+``
+
+Once inside the PostgreSQL container, we can connect to the DB using psql by using the following command:
+
+`psql <db name> <db user>`
+
+From inside the psql, we can list all DBs by issuing the following command:
+
+`\dt`
+
+To see the first 10 elements of a table one can use:
+
+`SELECT * FROM <table name> LIMIT 10`
+
+To show the number of rows on a table:
+
+`SELECT COUNT(*) FROM <table name>`
+
+And to delete all rows from a table:
+
+`DELETE FROM <table name>`
+
 ## Celery
 
 Broker: RabbitMQ
