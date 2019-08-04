@@ -64,6 +64,10 @@ Or, if running detached:
 
 `sudo docker exec -it <container> /bin/bash`
 
+With Django, while deploying, not forget to build the static files by running the following command inside the container:
+
+`python manage.py collectstatic`
+
 ## Internationalization
 
 1. Go inside the app folder and type `django-admin makemessages -l <language>`
