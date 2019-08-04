@@ -56,6 +56,10 @@ sudo docker-compose build --build-arg PROXY="http://user:password@proxyserver:po
 
 `sudo docker-compose up`
 
+Or, if running detached:
+
+`sudo docker-compose up -d`
+
 - Debugging
 
 `sudo docker exec -it <container> /bin/bash`
