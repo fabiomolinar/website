@@ -27,6 +27,9 @@ body {
 .zinnia #header{
   padding-top: 2.5em;
 }
+.zinnia .entry-content img, .zinnia .entry-content img.left{
+    float: unset;
+}
 /* --------------------------------- */
 
 /* Timeline (at the about page) ---- */
