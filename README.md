@@ -304,6 +304,7 @@ To renew the certificates:
 
 - Run a certbot container with the following command:
   - `sudo docker run --rm -it --name certbot -v "website_certs:/etc/letsencrypt" -v "website_certs_data:/var/www/certbot" certbot/certbot:v0.30.0 renew --webroot --webroot-path /var/www/certbot`
+  - Don't forget to restart the nginx server to load the new cert files.
 
 - To run on development environment we need to create the certificates ourselves.
   - Check [this site](https://deliciousbrains.com/ssl-certificate-authority-for-local-https-development/) for reference on how to create it.
